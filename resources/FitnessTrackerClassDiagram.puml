@@ -9,4 +9,14 @@ class UpdateWorkoutActivity {
 
 class GetWorkoutActivity {
 }
+
+class WorkoutModel {
+ Date : date
+ String : name
+ String : notes
+}
+
+class ExerciseModel {
+ String : name
+}
 @enduml

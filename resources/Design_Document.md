@@ -66,7 +66,7 @@ String exercise;
 * Accepts `PUT` request to `/workouts/:date`
 * Accepts data to update a previous workout including the updated workout name and notes
 
-![Client sends the submit update form the Website Workout page. Website workout page sends an update request to UpdateWorkoutActivity. UpdateWorkoutActivity saves updates to the workout database. ](main/Update_Workout.puml)
+![Client sends the submit update form the Website Workout page. Website workout page sends an update request to UpdateWorkoutActivity. UpdateWorkoutActivity saves updates to the workout database. ](main/Update_Workout.png)
    
 ---
 ## **Tables**
@@ -80,4 +80,5 @@ notes // string
 Exercises
 ```
 exercise // partition key, string
+
 ```
