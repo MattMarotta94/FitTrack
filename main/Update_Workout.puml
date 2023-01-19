@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+actor Client
+participant Website_Workout_Page
+participant Update_Workout_Activity
+database Workouts
+autonumber
+Client-> Website_Workout_Page: Submit workout updates form
+Website_Workout_Page --> Update_Workout_Activity: Send updates request
+Update_Workout_Activity --> Workouts: save updates
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class CreateWorkoutActivity {
+}
+
+class UpdateWorkoutActivity {
+}
+
+class GetWorkoutActivity {
+}
+@enduml
