@@ -2,10 +2,7 @@
 
 ## **Problem Statement**
 
-My fitness tracker (name pending) will provide users with an easy way to keep track of their progress. My program will act as a gym journal and allow users to record their workout data. Users will have the ability to record what exercises they’ve done, what weight they used, the rep range, and/or the time they spent doing said exercise. Each entry will have a section for notes that users can refer back to if they choose to. The fitness tracker will have a date section users will fill out before they record any new data. This will allow users to have their data organized chronologically and further act as a journal. Users will be able to search previous entries by date and view the contents of that entry.
-
----
-## **Top Questions To Resolve in Review**
+FitTrack will provide users with an easy way to keep track of their progress. My program will act as a gym journal and allow users to record their workout data. Users will have the ability to record what exercises they’ve done, what weight they used, the rep range, and/or the time they spent doing said exercise. Each entry will have a section for notes that users can refer back to if they choose to. The fitness tracker will have a date section users will fill out before they record any new data. This will allow users to have their data organized chronologically and further act as a journal. Users will be able to search previous entries by date and view the contents of that entry.
 
 ---
 ## **Use Cases**
@@ -27,8 +24,8 @@ My fitness tracker (name pending) will provide users with an easy way to keep tr
   * Adding exercise data to a new workout entry.
   * Adding notes to a new workout entry.
   * Retrieving all workouts a user has logged.
-* ### **Out of Scope**
   * Editing old entries.
+* ### **Out of Scope**
   * Sharing workouts between users.
   * Adding custom exercises.
   * Tagging exercises as favorites.
@@ -45,12 +42,54 @@ Models
 Date date; 
 String name;
 String notes; 
+List<Exercise> exercises;
 ```
 ```
-// ExerciseModel
+// Interface Exercise
+getName() : String
+getWeight() : String
+getSets() : int
+getReps() : int
+getDistance() : double
+getTime() : double
 
-String exercise;
+setName() : String
+setWeight(): String
+setSets() : int
+setReps() : int
+setDistance() : double
+setTime : double
 ```
+```
+// WeightLiftingModel implements Exercise
+String name;
+String weight:
+int sets;
+int reps;
+
+getName() : String
+getWeight() : String
+getSets() : int
+getReps() : int
+
+setName() : String
+setWeight(): String
+setSets() : int
+setReps() : int
+```
+```
+// CardioModel implements Exercise
+String name;
+int distance;
+double time;
+
+getDistance() : double
+getTime() : double
+
+setDistance() : double
+setTime : double
+```
+
 ### **Get Workout Endpoint**
 * Accepts `GET` request to `/workouts/:date`
 * Accepts a Date and returns the corresponding WorkoutModel
