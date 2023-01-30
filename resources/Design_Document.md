@@ -16,7 +16,7 @@ FitTrack will provide users with an easy way to keep track of their progress. My
 * U7. As a user, I want to log a combination of weight/reps/time/distance if the exercise utilizes more than one metric.
 * U8. As a user, I want to add notes to my workout.
 * U9. As a user, I want to retrieve a single previous workout using the date I logged the workout.
-* U10. As a user, I want to view how many times I worked out in a given week/month/year.
+* U10. As a user, I want to edit a previous workout.
 ---
 ## **Project Scope**
 * ### **In Scope**
@@ -30,6 +30,7 @@ FitTrack will provide users with an easy way to keep track of their progress. My
   * Adding custom exercises.
   * Tagging exercises as favorites.
   * Generating a workout based on body part/what the user wants to focus on.
+  * Allowing users to view their workouts sorted by a date range.
 ---
 ## **Proposed Architecture Overview** 
 
@@ -38,86 +39,61 @@ FitTrack will provide users with an easy way to keep track of their progress. My
 Models
 ```
 // WorkoutModel 
-
 Date date; 
 String name;
 String notes; 
 List<Exercise> exercises;
 ```
 ```
-// Interface Exercise
-getName() : String
-getWeight() : String
-getSets() : int
-getReps() : int
-getDistance() : double
-getTime() : double
-
-setName() : String
-setWeight(): String
-setSets() : int
-setReps() : int
-setDistance() : double
-setTime : double
-```
-```
-// WeightLiftingModel implements Exercise
+// WeightLiftingModel
 String name;
 String weight:
 int sets;
 int reps;
-
-getName() : String
-getWeight() : String
-getSets() : int
-getReps() : int
-
-setName() : String
-setWeight(): String
-setSets() : int
-setReps() : int
 ```
 ```
-// CardioModel implements Exercise
+// CardioModel
 String name;
 int distance;
 double time;
-
-getDistance() : double
-getTime() : double
-
-setDistance() : double
-setTime : double
 ```
 
 ### **Get Workout Endpoint**
 * Accepts `GET` request to `/workouts/:date`
-* Accepts a Date and returns the corresponding WorkoutModel
-  * If the user did not work out that day an empty workout will be returned
+* Accepts a Date and returns the corresponding WorkoutModel.
+  * If the user did not work out that day an empty workout will be returned.
 
 ### **Create Workout Endpoint**
-* Accepts `POST` request to `/workouts`
+* Accepts `POST` request to `/workouts/`
 * Accepts data to create a new workout with a Date, provided name, exercise data, and an optional notes field.
 * Workout name will be validated by checking for illegal characters. 
-  * If the workout contains any invalid characters, will throw InvalidAttributeException
+  * If the workout contains any invalid characters, will throw InvalidAttributeException.
+
+### **Create User Profile**
+* Accepts `POST` request to `/user/:workouts`
+* Accepts data to create a user profile.
 
 ### **Update Workout Endpoint**
 * Accepts `PUT` request to `/workouts/:date`
-* Accepts data to update a previous workout including the updated workout name and notes
+* Accepts data to update a previous workout including the updated workout name, exercise information, and notes.
 
-![Client sends the submit update form the Website Workout page. Website workout page sends an update request to UpdateWorkoutActivity. UpdateWorkoutActivity saves updates to the workout database. ](main/Update_Workout.png)
+ 
+![Client sends the submit update form the Website Workout page. Website workout page sends an update request to UpdateWorkoutActivity. UpdateWorkoutActivity saves updates to the workout database. ](/resources/Update_Workout.png)
    
 ---
 ## **Tables**
 Workouts
 ```
-date // partition key, string 
+userid // partition key, string
+date // sort key, string 
 name // string
 exercises // list
 notes // string
 ```
 Exercises
 ```
-exercise // partition key, string
-
+exerciseType // partition key, string
+exerciseName // sort key, string
+metricTypes // stringSet
+description // string
 ```
