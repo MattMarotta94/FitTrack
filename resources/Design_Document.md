@@ -9,14 +9,12 @@ FitTrack will provide users with an easy way to keep track of their progress. My
     
 * U1. As a user, I want to create a profile that will store all of my entries.
 * U2. As a user, I want to select an exercise to add to my workout.
-* U3. As a user, I want to add what weight I used for a weight based exercise.
-* U4. As a user, I want to add how many repetitions I did for a repetition based exercise.
-* U5. As a user, I want to log how long I did an exercise for a timed based exercise.
-* U6. As a user, I want to log how many miles I did for a distance based exercise.
-* U7. As a user, I want to log a combination of weight/reps/time/distance if the exercise utilizes more than one metric.
-* U8. As a user, I want to add notes to my workout.
-* U9. As a user, I want to retrieve a single previous workout using the date I logged the workout.
-* U10. As a user, I want to edit a previous workout.
+* U3. As a user, I want to add a weight lifting exercise to my workout, logging weight, sets, and repetitions.
+* U4. As a user, I want to add a cardio exercise to my workout, logging distance and time.
+* U5. As a user, I want to add a calisthenics exercise to my workout, logging sets and repetitions.
+* U6. As a user, I want to add notes to my workout.
+* U7. As a user, I want to view a previous workout using the date I logged the workout.
+* U8. As a user, I want to edit a previous workout. 
 ---
 ## **Project Scope**
 * ### **In Scope**
@@ -38,24 +36,30 @@ FitTrack will provide users with an easy way to keep track of their progress. My
 ## **API**
 Models
 ```
-// com.nashss.se.fittrack.models.WorkoutModel 
+//WorkoutModel 
 Date date; 
 String name;
 String notes; 
-List<com.nashss.se.fittrack.models.Exercise> exercises;
+List<Exercise> exercises;
 ```
 ```
-// com.nashss.se.fittrack.models.WeightLiftingModel
+//WeightLiftingModel
 String name;
 String weight:
 int sets;
 int reps;
 ```
 ```
-// models.CardioModel
+//CardioModel
 String name;
 int distance;
 double time;
+```
+```
+//CalisthenicsModel
+String name;
+int sets;
+int reps;
 ```
 
 ### **Get Workout Endpoint**
