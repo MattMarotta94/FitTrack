@@ -1,22 +1,56 @@
 @startuml
 'https://plantuml.com/class-diagram
-
-class CreateWorkoutActivity {
-}
-
-class UpdateWorkoutActivity {
-}
-
-class GetWorkoutActivity {
-}
-
 class WorkoutModel {
  Date : date
  String : name
  String : notes
+ List<Exercises> : exercises
 }
 
-class ExerciseModel {
- String : name
+interface ExerciseModel {
+--Getters--
+getName() : String
+getWeight() : String
+getSets() : int
+getReps() : int
+getDistance() : double
+getTime() : double
+--Setters--
+ setName() : String
+ setWeight(): String
+ setSets() : int
+ setReps() : int
+ setDistance() : double
+ setTime : double
+}
+
+class WeightLifting implements ExerciseModel {
+-{static} name : String
+-{static} weight : String
+-{static} sets : int
+-{static} reps : int
+--Getters--
+getName() : String
+getWeight() : String
+getSets() : int
+getReps() : int
+--Setters--
+setName() : String
+setWeight(): String
+setSets() : int
+setReps() : int
+}
+
+class Cardio implements ExerciseModel {
+-{static} name : String
+-{static} distance : double
+-{static} time : double
+--Getters--
+getDistance() : double
+getTime() : double
+--Setters--
+setDistance() : double
+setTime : double
+
 }
 @enduml
