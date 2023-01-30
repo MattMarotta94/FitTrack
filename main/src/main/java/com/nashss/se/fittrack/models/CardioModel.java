@@ -1,3 +1,5 @@
+package com.nashss.se.fittrack.models;
+
 import java.util.Objects;
 
 public class CardioModel implements Exercise {

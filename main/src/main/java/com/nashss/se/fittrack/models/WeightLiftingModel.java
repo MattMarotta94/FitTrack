@@ -1,4 +1,4 @@
-
+package com.nashss.se.fittrack.models;
 
 public class WeightLiftingModel implements Exercise {
 

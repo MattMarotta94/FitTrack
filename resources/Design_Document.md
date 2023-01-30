@@ -2,7 +2,7 @@
 
 ## **Problem Statement**
 
-FitTrack will provide users with an easy way to keep track of their progress. My program will act as a gym journal and allow users to record their workout data. Users will have the ability to record what exercises they’ve done, what weight they used, the rep range, and/or the time they spent doing said exercise. Each entry will have a section for notes that users can refer back to if they choose to. The fitness tracker will have a date section users will fill out before they record any new data. This will allow users to have their data organized chronologically and further act as a journal. Users will be able to search previous entries by date and view the contents of that entry.
+FitTrack will provide users with an easy way to keep track of their progress. My program will act as a gym journal and allow users to record their workout data. Users will have the ability to record what exercises they’ve done, what weight they used, the rep range, and/or the time they spent doing said exercise. Each entry will have a section for notes that users can refer back to if they choose to. The fitness tracker will record what date the workout entry was created. This will allow users to have their data organized chronologically and further act as a journal. Users will be able to search previous entries by date and view the contents of that entry.
 
 ---
 ## **Use Cases**
@@ -38,21 +38,21 @@ FitTrack will provide users with an easy way to keep track of their progress. My
 ## **API**
 Models
 ```
-// WorkoutModel 
+// com.nashss.se.fittrack.models.WorkoutModel 
 Date date; 
 String name;
 String notes; 
-List<Exercise> exercises;
+List<com.nashss.se.fittrack.models.Exercise> exercises;
 ```
 ```
-// WeightLiftingModel
+// com.nashss.se.fittrack.models.WeightLiftingModel
 String name;
 String weight:
 int sets;
 int reps;
 ```
 ```
-// CardioModel
+// models.CardioModel
 String name;
 int distance;
 double time;
@@ -60,7 +60,7 @@ double time;
 
 ### **Get Workout Endpoint**
 * Accepts `GET` request to `/workouts/:date`
-* Accepts a Date and returns the corresponding WorkoutModel.
+* Accepts a Date and returns the corresponding com.nashss.se.fittrack.models.WorkoutModel.
   * If the user did not work out that day an empty workout will be returned.
 
 ### **Create Workout Endpoint**
