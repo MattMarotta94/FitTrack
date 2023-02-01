@@ -2,21 +2,19 @@
 
 ## **Problem Statement**
 
-FitTrack will provide users with an easy way to keep track of their progress. My program will act as a gym journal and allow users to record their workout data. Users will have the ability to record what exercises they’ve done, what weight they used, the rep range, and/or the time they spent doing said exercise. Each entry will have a section for notes that users can refer back to if they choose to. The fitness tracker will have a date section users will fill out before they record any new data. This will allow users to have their data organized chronologically and further act as a journal. Users will be able to search previous entries by date and view the contents of that entry.
+FitTrack will provide users with an easy way to keep track of their progress. My program will act as a gym journal and allow users to record their workout data. Users will have the ability to record what exercises they’ve done, what weight they used, the rep range, and/or the time they spent doing said exercise. Each entry will have a section for notes that users can refer back to if they choose to. The fitness tracker will record what date the workout entry was created. This will allow users to have their data organized chronologically and further act as a journal. Users will be able to search previous entries by date and view the contents of that entry.
 
 ---
 ## **Use Cases**
     
 * U1. As a user, I want to create a profile that will store all of my entries.
 * U2. As a user, I want to select an exercise to add to my workout.
-* U3. As a user, I want to add what weight I used for a weight based exercise.
-* U4. As a user, I want to add how many repetitions I did for a repetition based exercise.
-* U5. As a user, I want to log how long I did an exercise for a timed based exercise.
-* U6. As a user, I want to log how many miles I did for a distance based exercise.
-* U7. As a user, I want to log a combination of weight/reps/time/distance if the exercise utilizes more than one metric.
-* U8. As a user, I want to add notes to my workout.
-* U9. As a user, I want to retrieve a single previous workout using the date I logged the workout.
-* U10. As a user, I want to edit a previous workout.
+* U3. As a user, I want to add a weight lifting exercise to my workout, logging weight, sets, and repetitions.
+* U4. As a user, I want to add a cardio exercise to my workout, logging distance and time.
+* U5. As a user, I want to add a calisthenics exercise to my workout, logging sets and repetitions.
+* U6. As a user, I want to add notes to my workout.
+* U7. As a user, I want to view a previous workout using the date I logged the workout.
+* U8. As a user, I want to edit a previous workout. 
 ---
 ## **Project Scope**
 * ### **In Scope**
@@ -38,29 +36,35 @@ FitTrack will provide users with an easy way to keep track of their progress. My
 ## **API**
 Models
 ```
-// WorkoutModel 
+//WorkoutModel 
 Date date; 
 String name;
 String notes; 
 List<Exercise> exercises;
 ```
 ```
-// WeightLiftingModel
+//WeightLiftingModel
 String name;
 String weight:
 int sets;
 int reps;
 ```
 ```
-// CardioModel
+//CardioModel
 String name;
 int distance;
 double time;
 ```
+```
+//CalisthenicsModel
+String name;
+int sets;
+int reps;
+```
 
 ### **Get Workout Endpoint**
 * Accepts `GET` request to `/workouts/:date`
-* Accepts a Date and returns the corresponding WorkoutModel.
+* Accepts a Date and returns the corresponding com.nashss.se.fittrack.models.WorkoutModel.
   * If the user did not work out that day an empty workout will be returned.
 
 ### **Create Workout Endpoint**

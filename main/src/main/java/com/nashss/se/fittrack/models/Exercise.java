@@ -1,3 +1,5 @@
+package com.nashss.se.fittrack.models;
+
 public interface Exercise {
 
     //Getter Methods

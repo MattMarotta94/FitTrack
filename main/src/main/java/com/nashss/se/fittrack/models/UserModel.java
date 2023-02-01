@@ -1,3 +1,4 @@
+package com.nashss.se.fittrack.models;
 
 public class UserModel {
     private String username;
