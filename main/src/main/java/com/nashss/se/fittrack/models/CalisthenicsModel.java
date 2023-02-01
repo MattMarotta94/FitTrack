@@ -2,28 +2,19 @@ package com.nashss.se.fittrack.models;
 
 import java.util.Objects;
 
-public class WeightLiftingModel implements Exercise {
-
+public class CalisthenicsModel implements Exercise {
     private String name;
-    private int weight;
     private int sets;
     private int reps;
 
-    public WeightLiftingModel(String name, int weight, int sets, int reps){
+    public CalisthenicsModel(String name, int sets, int reps){
         this.name = name;
-        this.weight = weight;
         this.sets = sets;
         this.reps = reps;
     }
-
     @Override
     public String getName() {
         return this.name;
-    }
-
-    @Override
-    public int getWeight() {
-        return this.weight;
     }
 
     @Override
@@ -42,48 +33,39 @@ public class WeightLiftingModel implements Exercise {
     }
 
     @Override
-    public void setWeight(int weight) {
-       this.weight = weight;
-    }
-
-    @Override
     public void setSets(int sets) {
         this.sets = sets;
     }
 
     @Override
     public void setReps(int reps) {
-        this.reps = reps;
+       this.reps = reps;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        WeightLiftingModel that = (WeightLiftingModel) o;
-        return weight == that.weight && sets == that.sets && reps == that.reps && Objects.equals(name, that.name);
+        CalisthenicsModel that = (CalisthenicsModel) o;
+        return sets == that.sets && reps == that.reps && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, weight, sets, reps);
+        return Objects.hash(name, sets, reps);
     }
 
-    public static Builder builder(){return new Builder();}
+    public static Builder builder() {
+        return new Builder();
+    }
 
-    public static class Builder {
+    public static class Builder{
         private String name;
-        private int weight;
         private int sets;
         private int reps;
 
         public Builder withName(String name){
             this.name = name;
-            return this;
-        }
-
-        public Builder withWeight(int weight){
-            this.weight = weight;
             return this;
         }
 
@@ -97,6 +79,7 @@ public class WeightLiftingModel implements Exercise {
             return this;
         }
 
-        public WeightLiftingModel build(){return new WeightLiftingModel(name, weight, sets, reps);}
+        public CalisthenicsModel build(){return new CalisthenicsModel(name, sets, reps);}
+
     }
 }
