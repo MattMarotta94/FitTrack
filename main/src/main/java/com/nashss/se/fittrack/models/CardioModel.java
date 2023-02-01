@@ -51,4 +51,33 @@ public class CardioModel implements Exercise {
     public int hashCode() {
         return Objects.hash(name, distance, time);
     }
+
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private String name;
+        private double distance;
+        private double time;
+
+        public Builder withName(String name){
+            this.name = name;
+            return this;
+        }
+
+        public Builder withDistance(double distance){
+            this.distance = distance;
+            return this;
+        }
+
+        public Builder withTime(double time) {
+            this.time = time;
+            return this;
+        }
+
+        public CardioModel build(){return new CardioModel(name, distance, time);}
+
+    }
 }
