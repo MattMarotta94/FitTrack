@@ -6,12 +6,16 @@ import com.nashss.se.fittrack.converters.ModelConverter;
 import com.nashss.se.fittrack.dynamodb.WorkoutDao;
 import com.nashss.se.fittrack.dynamodb.models.Workout;
 
+import javax.inject.Inject;
+
 public class UpdateWorkoutActivity {
     private final WorkoutDao workoutDao;
 
+    @Inject
     public UpdateWorkoutActivity(WorkoutDao workoutDao){
         this.workoutDao = workoutDao;
     }
+
 
     public UpdateWorkoutResult handleRequest(final UpdateWorkoutRequest updateWorkoutRequest){
 

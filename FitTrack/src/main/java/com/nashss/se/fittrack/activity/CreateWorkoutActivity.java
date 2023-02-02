@@ -6,15 +6,24 @@ import com.nashss.se.fittrack.converters.ModelConverter;
 import com.nashss.se.fittrack.dynamodb.WorkoutDao;
 import com.nashss.se.fittrack.dynamodb.models.Workout;
 import com.nashss.se.fittrack.models.WorkoutModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import javax.inject.Inject;
+
 
 public class CreateWorkoutActivity {
+
+    private final Logger log = LogManager.getLogger();
     private final WorkoutDao workoutDao;
 
+    @Inject
     public CreateWorkoutActivity(WorkoutDao workoutDao){
         this.workoutDao = workoutDao;
     }
 
     public CreateWorkoutResult handleRequest(final CreateWorkoutRequest createWorkoutRequest){
+        log.info("Received CreateWorkoutRequest {}", createWorkoutRequest);
 
         //work in progress
 

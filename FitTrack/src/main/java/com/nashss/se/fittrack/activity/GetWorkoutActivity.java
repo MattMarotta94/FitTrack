@@ -7,11 +7,13 @@ import com.nashss.se.fittrack.dynamodb.WorkoutDao;
 import com.nashss.se.fittrack.dynamodb.models.Workout;
 import com.nashss.se.fittrack.models.WorkoutModel;
 
+import javax.inject.Inject;
 import java.util.Date;
 
 public class GetWorkoutActivity {
     private final WorkoutDao workoutDao;
 
+    @Inject
     public GetWorkoutActivity(WorkoutDao workoutDao){this.workoutDao = workoutDao;}
 
 

@@ -8,5 +8,5 @@
  */
 
 rootProject.name = 'capstone'
-include 'main'
+include 'FitTrack'
 
