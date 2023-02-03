@@ -1,16 +1,14 @@
 package com.nashss.se.fittrack.activity.results;
-
-import com.nashss.se.fittrack.activity.requests.UpdateWorkoutRequest;
 import com.nashss.se.fittrack.models.WorkoutModel;
 
 public class UpdateWorkoutResult {
     private final WorkoutModel workout;
 
-    private UpdateWorkoutResult(WorkoutModel workout){
+    private UpdateWorkoutResult(WorkoutModel workout) {
         this.workout = workout;
     }
 
-    public WorkoutModel getWorkout(){
+    public WorkoutModel getWorkout() {
         return workout;
     }
 
@@ -29,11 +27,13 @@ public class UpdateWorkoutResult {
     public static class Builder {
         private WorkoutModel workout;
 
-        public Builder withWorkout(WorkoutModel workout){
+        public Builder withWorkout(WorkoutModel workout) {
             this.workout = workout;
             return this;
         }
 
-        public UpdateWorkoutResult build(){return new UpdateWorkoutResult(workout);}
+        public UpdateWorkoutResult build() {
+            return new UpdateWorkoutResult(workout);
+        }
     }
 }

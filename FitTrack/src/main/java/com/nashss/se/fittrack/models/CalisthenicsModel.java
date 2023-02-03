@@ -7,7 +7,7 @@ public class CalisthenicsModel implements Exercise {
     private int sets;
     private int reps;
 
-    public CalisthenicsModel(String name, int sets, int reps){
+    public CalisthenicsModel(String name, int sets, int reps) {
         this.name = name;
         this.sets = sets;
         this.reps = reps;
@@ -39,13 +39,17 @@ public class CalisthenicsModel implements Exercise {
 
     @Override
     public void setReps(int reps) {
-       this.reps = reps;
+        this.reps = reps;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         CalisthenicsModel that = (CalisthenicsModel) o;
         return sets == that.sets && reps == that.reps && Objects.equals(name, that.name);
     }
@@ -59,27 +63,29 @@ public class CalisthenicsModel implements Exercise {
         return new Builder();
     }
 
-    public static class Builder{
+    public static class Builder {
         private String name;
         private int sets;
         private int reps;
 
-        public Builder withName(String name){
+        public Builder withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder withSets(int sets){
+        public Builder withSets(int sets) {
             this.sets = sets;
             return this;
         }
 
-        public Builder withReps(int reps){
+        public Builder withReps(int reps) {
             this.reps = reps;
             return this;
         }
 
-        public CalisthenicsModel build(){return new CalisthenicsModel(name, sets, reps);}
+        public CalisthenicsModel build() {
+            return new CalisthenicsModel(name, sets, reps);
+        }
 
     }
 }

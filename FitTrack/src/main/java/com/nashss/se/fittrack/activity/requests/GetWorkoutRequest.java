@@ -5,9 +5,13 @@ import java.util.Date;
 public class GetWorkoutRequest {
     private final Date date;
 
-    private GetWorkoutRequest(Date date){this.date = date;}
+    private GetWorkoutRequest(Date date) {
+        this.date = date;
+    }
 
-    public Date getDate(){return date;}
+    public Date getDate() {
+        return date;
+    }
 
     @Override
     public String toString() {

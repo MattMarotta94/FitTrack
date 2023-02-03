@@ -12,14 +12,12 @@ public class UpdateWorkoutActivity {
     private final WorkoutDao workoutDao;
 
     @Inject
-    public UpdateWorkoutActivity(WorkoutDao workoutDao){
+    public UpdateWorkoutActivity(WorkoutDao workoutDao) {
         this.workoutDao = workoutDao;
     }
 
 
-    public UpdateWorkoutResult handleRequest(final UpdateWorkoutRequest updateWorkoutRequest){
-
-       // work in progress
+    public UpdateWorkoutResult handleRequest(final UpdateWorkoutRequest updateWorkoutRequest) {
 
         Workout workout = workoutDao.getWorkout(updateWorkoutRequest.getDate());
 

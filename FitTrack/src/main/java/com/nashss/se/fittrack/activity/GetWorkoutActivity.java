@@ -7,17 +7,20 @@ import com.nashss.se.fittrack.dynamodb.WorkoutDao;
 import com.nashss.se.fittrack.dynamodb.models.Workout;
 import com.nashss.se.fittrack.models.WorkoutModel;
 
-import javax.inject.Inject;
 import java.util.Date;
+import javax.inject.Inject;
+
 
 public class GetWorkoutActivity {
     private final WorkoutDao workoutDao;
 
     @Inject
-    public GetWorkoutActivity(WorkoutDao workoutDao){this.workoutDao = workoutDao;}
+    public GetWorkoutActivity(WorkoutDao workoutDao) {
+        this.workoutDao = workoutDao;
+    }
 
 
-    public GetWorkoutResult handleRequest(final GetWorkoutRequest getWorkoutRequest){
+    public GetWorkoutResult handleRequest(final GetWorkoutRequest getWorkoutRequest) {
         Date requestedDate = getWorkoutRequest.getDate();
         Workout workout = workoutDao.getWorkout(requestedDate);
         WorkoutModel workoutModel = new ModelConverter().toWorkoutModel(workout);

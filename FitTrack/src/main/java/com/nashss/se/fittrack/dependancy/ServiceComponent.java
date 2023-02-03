@@ -3,6 +3,7 @@ package com.nashss.se.fittrack.dependancy;
 import com.nashss.se.fittrack.activity.CreateWorkoutActivity;
 import com.nashss.se.fittrack.activity.GetWorkoutActivity;
 import com.nashss.se.fittrack.activity.UpdateWorkoutActivity;
+
 import dagger.Component;
 
 import javax.inject.Singleton;

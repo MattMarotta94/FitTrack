@@ -7,7 +7,7 @@ public class CardioModel implements Exercise {
     private double distance;
     private double time;
 
-    public CardioModel(String name, double distance, double time){
+    public CardioModel(String name, double distance, double time) {
         this.name = name;
         this.distance = distance;
         this.time = time;
@@ -41,8 +41,12 @@ public class CardioModel implements Exercise {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         CardioModel that = (CardioModel) o;
         return Double.compare(that.distance, distance) == 0 && Double.compare(that.time, time) == 0 && Objects.equals(name, that.name);
     }
@@ -62,12 +66,12 @@ public class CardioModel implements Exercise {
         private double distance;
         private double time;
 
-        public Builder withName(String name){
+        public Builder withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder withDistance(double distance){
+        public Builder withDistance(double distance) {
             this.distance = distance;
             return this;
         }
@@ -77,7 +81,9 @@ public class CardioModel implements Exercise {
             return this;
         }
 
-        public CardioModel build(){return new CardioModel(name, distance, time);}
+        public CardioModel build() {
+            return new CardioModel(name, distance, time);
+        }
 
     }
 }

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-public class AuthenticatedLambdaRequest <T> extends LambdaRequest<T> {
+public class AuthenticatedLambdaRequest<T> extends LambdaRequest<T> {
     /**
      * Use the given converter to create an instance of T from the claims included in the request's JWT token.
      * @param converter Contains the conversion code

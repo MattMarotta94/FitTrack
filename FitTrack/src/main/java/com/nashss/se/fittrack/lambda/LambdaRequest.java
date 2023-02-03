@@ -13,7 +13,7 @@ import java.util.function.Function;
 
 import static com.nashss.se.fittrack.utils.NullUtils.ifNull;
 
-public class LambdaRequest <T> extends APIGatewayProxyRequestEvent{
+public class LambdaRequest<T> extends APIGatewayProxyRequestEvent {
     protected static final ObjectMapper MAPPER = new ObjectMapper();
     protected final Logger log = LogManager.getLogger();
 

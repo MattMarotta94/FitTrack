@@ -1,16 +1,15 @@
 package com.nashss.se.fittrack.activity.results;
-
-import com.nashss.se.fittrack.dynamodb.models.Workout;
 import com.nashss.se.fittrack.models.WorkoutModel;
 
 public class GetWorkoutResult {
     private final WorkoutModel workout;
 
-    private GetWorkoutResult(WorkoutModel workout){
+    private GetWorkoutResult(WorkoutModel workout) {
         this.workout = workout;
     }
 
-    public WorkoutModel getWorkout(){return workout;}
+    public WorkoutModel getWorkout() {
+        return workout; }
 
     @Override
     public String toString() {
@@ -26,10 +25,12 @@ public class GetWorkoutResult {
     public static class Builder {
         private WorkoutModel workout;
 
-        public Builder withWorkout(WorkoutModel workout){
+        public Builder withWorkout(WorkoutModel workout) {
             this.workout = workout;
             return this;
         }
-        public GetWorkoutResult build(){return new GetWorkoutResult(workout);}
+        public GetWorkoutResult build() {
+            return new GetWorkoutResult(workout);
+        }
     }
 }

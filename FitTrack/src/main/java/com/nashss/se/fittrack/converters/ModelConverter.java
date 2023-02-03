@@ -5,7 +5,7 @@ import com.nashss.se.fittrack.models.WorkoutModel;
 
 public class ModelConverter {
 
-    public WorkoutModel toWorkoutModel(Workout workout){
+    public WorkoutModel toWorkoutModel(Workout workout) {
         return WorkoutModel.builder()
                 .withDate(workout.getDate())
                 .withName(workout.getName())

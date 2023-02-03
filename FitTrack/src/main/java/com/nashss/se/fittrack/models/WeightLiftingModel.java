@@ -9,7 +9,7 @@ public class WeightLiftingModel implements Exercise {
     private int sets;
     private int reps;
 
-    public WeightLiftingModel(String name, int weight, int sets, int reps){
+    public WeightLiftingModel(String name, int weight, int sets, int reps) {
         this.name = name;
         this.weight = weight;
         this.sets = sets;
@@ -43,7 +43,7 @@ public class WeightLiftingModel implements Exercise {
 
     @Override
     public void setWeight(int weight) {
-       this.weight = weight;
+        this.weight = weight;
     }
 
     @Override
@@ -58,8 +58,12 @@ public class WeightLiftingModel implements Exercise {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         WeightLiftingModel that = (WeightLiftingModel) o;
         return weight == that.weight && sets == that.sets && reps == that.reps && Objects.equals(name, that.name);
     }
@@ -69,7 +73,9 @@ public class WeightLiftingModel implements Exercise {
         return Objects.hash(name, weight, sets, reps);
     }
 
-    public static Builder builder(){return new Builder();}
+    public static Builder builder() {
+        return new Builder();
+    }
 
     public static class Builder {
         private String name;
@@ -77,26 +83,28 @@ public class WeightLiftingModel implements Exercise {
         private int sets;
         private int reps;
 
-        public Builder withName(String name){
+        public Builder withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder withWeight(int weight){
+        public Builder withWeight(int weight) {
             this.weight = weight;
             return this;
         }
 
-        public Builder withSets(int sets){
+        public Builder withSets(int sets) {
             this.sets = sets;
             return this;
         }
 
-        public Builder withReps(int reps){
+        public Builder withReps(int reps) {
             this.reps = reps;
             return this;
         }
 
-        public WeightLiftingModel build(){return new WeightLiftingModel(name, weight, sets, reps);}
+        public WeightLiftingModel build() {
+            return new WeightLiftingModel(name, weight, sets, reps);
+        }
     }
 }

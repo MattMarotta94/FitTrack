@@ -5,11 +5,13 @@ import com.nashss.se.fittrack.models.WorkoutModel;
 public class CreateWorkoutResult {
     private final WorkoutModel workout;
 
-    private CreateWorkoutResult(WorkoutModel workout){
+    private CreateWorkoutResult(WorkoutModel workout) {
         this.workout = workout;
     }
 
-    public WorkoutModel getWorkout(){return this.workout;}
+    public WorkoutModel getWorkout() {
+        return this.workout;
+    }
 
     @Override
     public String toString() {
@@ -25,11 +27,13 @@ public class CreateWorkoutResult {
     public static class Builder {
         private WorkoutModel workout;
 
-        public Builder withWorkout(WorkoutModel workout){
+        public Builder withWorkout(WorkoutModel workout) {
             this.workout = workout;
             return this;
         }
 
-        public CreateWorkoutResult build(){return new CreateWorkoutResult(workout);}
+        public CreateWorkoutResult build() {
+            return new CreateWorkoutResult(workout);
+        }
     }
 }

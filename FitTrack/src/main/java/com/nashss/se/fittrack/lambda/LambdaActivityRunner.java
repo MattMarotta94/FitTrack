@@ -1,8 +1,8 @@
 package com.nashss.se.fittrack.lambda;
 
-
 import com.nashss.se.fittrack.dependancy.DaggerServiceComponent;
 import com.nashss.se.fittrack.dependancy.ServiceComponent;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -35,9 +35,9 @@ public class LambdaActivityRunner<TRequest, TResult>  {
 
     private ServiceComponent getService() {
         log.info("getService");
-          if (service == null) {
-          service = DaggerServiceComponent.create();
-       }
+        if (service == null) {
+            service = DaggerServiceComponent.create();
+        }
         return service;
     }
 }
