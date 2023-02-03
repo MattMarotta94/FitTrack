@@ -72,7 +72,7 @@ public class WeightLiftingModel implements Exercise {
     public int hashCode() {
         return Objects.hash(name, weight, sets, reps);
     }
-
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }

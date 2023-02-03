@@ -59,7 +59,7 @@ public class CreateWorkoutRequest {
         private Date date;
         private String notes;
         private List<Exercise> exerciseList;
-
+        //CHECKSTYLE:OFF:Builder
         public Builder withName(String name) {
             this.name = name;
             return this;

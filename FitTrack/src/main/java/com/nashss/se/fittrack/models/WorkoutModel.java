@@ -44,7 +44,8 @@ public class WorkoutModel {
             return false;
         }
         WorkoutModel that = (WorkoutModel) o;
-        return Objects.equals(name, that.name) && Objects.equals(date, that.date) && Objects.equals(notes, that.notes) && Objects.equals(exerciseList, that.exerciseList);
+        return Objects.equals(name, that.name) && Objects.equals(date, that.date) &&
+                Objects.equals(notes, that.notes) && Objects.equals(exerciseList, that.exerciseList);
     }
 
     @Override
@@ -52,7 +53,7 @@ public class WorkoutModel {
         return Objects.hash(name, date, notes, exerciseList);
     }
 
-
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }

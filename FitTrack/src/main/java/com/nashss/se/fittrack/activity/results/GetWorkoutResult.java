@@ -17,7 +17,7 @@ public class GetWorkoutResult {
                 "workout=" + workout +
                 '}';
     }
-
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }

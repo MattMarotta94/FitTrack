@@ -58,7 +58,7 @@ public class CalisthenicsModel implements Exercise {
     public int hashCode() {
         return Objects.hash(name, sets, reps);
     }
-
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }

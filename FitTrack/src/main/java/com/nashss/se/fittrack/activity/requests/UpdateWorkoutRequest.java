@@ -47,7 +47,7 @@ public class UpdateWorkoutRequest {
                 ", exerciseList=" + exerciseList +
                 '}';
     }
-
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }

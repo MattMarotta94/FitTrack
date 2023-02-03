@@ -19,7 +19,7 @@ public class GetWorkoutRequest {
                 "date=" + date +
                 '}';
     }
-
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }

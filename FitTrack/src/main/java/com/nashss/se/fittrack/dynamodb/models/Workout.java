@@ -62,7 +62,8 @@ public class Workout {
             return false;
         }
         Workout workout = (Workout) o;
-        return Objects.equals(name, workout.name) && Objects.equals(date, workout.date) && Objects.equals(notes, workout.notes) && Objects.equals(exerciseList, workout.exerciseList);
+        return Objects.equals(name, workout.name) && Objects.equals(date, workout.date) &&
+                Objects.equals(notes, workout.notes) && Objects.equals(exerciseList, workout.exerciseList);
     }
 
     @Override

@@ -48,7 +48,8 @@ public class CardioModel implements Exercise {
             return false;
         }
         CardioModel that = (CardioModel) o;
-        return Double.compare(that.distance, distance) == 0 && Double.compare(that.time, time) == 0 && Objects.equals(name, that.name);
+        return Double.compare(that.distance, distance) == 0 && Double.compare(that.time, time) == 0 &&
+                Objects.equals(name, that.name);
     }
 
     @Override
@@ -56,7 +57,7 @@ public class CardioModel implements Exercise {
         return Objects.hash(name, distance, time);
     }
 
-
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }

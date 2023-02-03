@@ -12,17 +12,31 @@ import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 
-
+/**
+ * Implementation of the CreateWorkoutActivity for the FitTrack's CreateWorkout API.
+ * This API allows users to create a new workout entry with a date, name, and empty notes/exercise fields.
+ */
 public class CreateWorkoutActivity {
 
     private final Logger log = LogManager.getLogger();
     private final WorkoutDao workoutDao;
 
+    /**
+     * Instantiates a new CreateWorkoutActivity object.
+     * @param workoutDao WorkoutDao to access the workouts table.
+     */
     @Inject
     public CreateWorkoutActivity(WorkoutDao workoutDao) {
         this.workoutDao = workoutDao;
     }
 
+    /**
+     * This method handles the incoming request by persisitng a new workout with
+     * the provided workout date, name, notes, and exercise list.
+     * @param createWorkoutRequest request object containing the workout name, date,
+     *                             notes, and exercise list associated with it.
+     * @return createWorkoutResult result object containing the API defined.
+     */
     public CreateWorkoutResult handleRequest(final CreateWorkoutRequest createWorkoutRequest) {
         log.info("Received CreateWorkoutRequest {}", createWorkoutRequest);
 
