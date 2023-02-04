@@ -9,6 +9,9 @@ import java.util.List;
 
 import static com.nashss.se.fittrack.utils.CollectionUtils.copyToList;
 
+/**
+ * Implementation of the CreateWorkoutRequest.
+ */
 @JsonDeserialize(builder = CreateWorkoutRequest.Builder.class)
 public class CreateWorkoutRequest {
     private final String name;
@@ -16,6 +19,13 @@ public class CreateWorkoutRequest {
     private final String notes;
     private final List<Exercise> exerciseList;
 
+    /**
+     * Instantiates a new CreateWorkoutRequest object.
+     * @param name the name of the workout.
+     * @param date the date the workout was created.
+     * @param notes any notes logged by the user.
+     * @param exerciseList a list of exercise objects.
+     */
     private CreateWorkoutRequest(String name, Date date, String notes, List<Exercise> exerciseList) {
         this.name = name;
         this.date = date;
@@ -48,7 +58,7 @@ public class CreateWorkoutRequest {
                 ", exerciseList=" + exerciseList +
                 '}';
     }
-
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }

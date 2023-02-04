@@ -2,11 +2,20 @@ package com.nashss.se.fittrack.models;
 
 import java.util.Objects;
 
+/**
+ * Represents a Calisthenics object.
+ */
 public class CalisthenicsModel implements Exercise {
     private String name;
     private int sets;
     private int reps;
 
+    /**
+     * Instantiates a CalisthenicsModel object.
+     * @param name the name of the exercise.
+     * @param sets the number of sets.
+     * @param reps the number of repetitions.
+     */
     public CalisthenicsModel(String name, int sets, int reps) {
         this.name = name;
         this.sets = sets;

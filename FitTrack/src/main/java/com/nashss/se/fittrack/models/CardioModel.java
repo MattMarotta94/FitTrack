@@ -2,11 +2,20 @@ package com.nashss.se.fittrack.models;
 
 import java.util.Objects;
 
+/**
+ * Represents a CardioModel object.
+ */
 public class CardioModel implements Exercise {
     private String name;
     private double distance;
     private double time;
 
+    /**
+     * Instantiates a CardioModel object.
+     * @param name the name of the exercise.
+     * @param distance the distance covered.
+     * @param time the time taken to complete the exercise.
+     */
     public CardioModel(String name, double distance, double time) {
         this.name = name;
         this.distance = distance;

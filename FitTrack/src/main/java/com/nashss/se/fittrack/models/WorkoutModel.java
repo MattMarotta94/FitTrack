@@ -5,13 +5,22 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-
+/**
+ * Represents a workout object.
+ */
 public class WorkoutModel {
     private String name;
     private Date date;
     private String notes;
     private List<Exercise> exerciseList;
 
+    /**
+     * Instantiates a WorkoutModel object.
+     * @param name the name of the workout.
+     * @param date the date the workout was created.
+     * @param notes the notes.
+     * @param exerciseList the list of exercise objects done during that workout.
+     */
     public WorkoutModel(String name, Date date, String notes, List<Exercise> exerciseList) {
         this.name = name;
         this.date = date;

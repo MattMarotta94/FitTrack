@@ -8,6 +8,9 @@ import java.util.Set;
 
 import static com.nashss.se.fittrack.utils.NullUtils.ifNotNull;
 
+/**
+ * Various helpful utilities for converting collections.
+ */
 public class CollectionUtils {
     private CollectionUtils() { }
 

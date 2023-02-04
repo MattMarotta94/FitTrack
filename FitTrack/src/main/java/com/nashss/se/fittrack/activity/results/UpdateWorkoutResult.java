@@ -1,6 +1,9 @@
 package com.nashss.se.fittrack.activity.results;
 import com.nashss.se.fittrack.models.WorkoutModel;
 
+/**
+ * Implementation of the UpdateWorkoutResult.
+ */
 public class UpdateWorkoutResult {
     private final WorkoutModel workout;
 

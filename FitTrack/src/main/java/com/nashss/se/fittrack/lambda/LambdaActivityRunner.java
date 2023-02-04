@@ -9,6 +9,11 @@ import org.apache.logging.log4j.Logger;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
+/**
+ * Lambda activity runner.
+ * @param <TRequest> the request.
+ * @param <TResult> the result.
+ */
 public class LambdaActivityRunner<TRequest, TResult>  {
     private ServiceComponent service;
     private final Logger log = LogManager.getLogger();

@@ -9,6 +9,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Represents a record in the workouts table.
+ */
 @DynamoDBTable(tableName = "workouts")
 public class Workout {
 

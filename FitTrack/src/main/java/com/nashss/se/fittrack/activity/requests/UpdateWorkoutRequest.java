@@ -7,6 +7,9 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Implementation of the UpdateWorkoutRequest.
+ */
 @JsonDeserialize(builder = UpdateWorkoutRequest.Builder.class)
 public class UpdateWorkoutRequest {
     private final String name;

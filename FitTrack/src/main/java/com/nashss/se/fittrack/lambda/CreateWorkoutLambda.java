@@ -5,7 +5,9 @@ import com.nashss.se.fittrack.activity.results.CreateWorkoutResult;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
-
+/**
+ * Creates a workout entry in the workouts table using the CreateWorkoutRequest.
+ */
 public class CreateWorkoutLambda
         extends LambdaActivityRunner<CreateWorkoutRequest, CreateWorkoutResult>
         implements RequestHandler<AuthenticatedLambdaRequest<CreateWorkoutRequest>, LambdaResponse> {
