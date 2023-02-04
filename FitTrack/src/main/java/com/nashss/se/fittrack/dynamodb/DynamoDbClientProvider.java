@@ -5,7 +5,9 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 
-
+/**
+ * Provides the DynamoDb client.
+ */
 public class DynamoDbClientProvider {
     /**
      * Returns DynamoDB client using default region.

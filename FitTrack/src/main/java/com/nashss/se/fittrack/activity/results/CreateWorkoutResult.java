@@ -2,6 +2,9 @@ package com.nashss.se.fittrack.activity.results;
 
 import com.nashss.se.fittrack.models.WorkoutModel;
 
+/**
+ * Implementation of the CreateWorkoutResult.
+ */
 public class CreateWorkoutResult {
     private final WorkoutModel workout;
 
@@ -19,7 +22,7 @@ public class CreateWorkoutResult {
                 "workout=" + workout +
                 '}';
     }
-
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }

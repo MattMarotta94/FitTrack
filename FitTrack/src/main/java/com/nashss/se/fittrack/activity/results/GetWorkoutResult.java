@@ -1,6 +1,9 @@
 package com.nashss.se.fittrack.activity.results;
 import com.nashss.se.fittrack.models.WorkoutModel;
 
+/**
+ * Implementation of the GetWorkoutResult.
+ */
 public class GetWorkoutResult {
     private final WorkoutModel workout;
 
@@ -17,7 +20,7 @@ public class GetWorkoutResult {
                 "workout=" + workout +
                 '}';
     }
-
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }

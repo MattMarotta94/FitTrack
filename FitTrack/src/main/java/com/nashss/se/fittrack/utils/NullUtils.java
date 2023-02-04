@@ -2,6 +2,9 @@ package com.nashss.se.fittrack.utils;
 
 import java.util.function.Supplier;
 
+/**
+ * Various utilities to deal with null.
+ */
 public class NullUtils {
     private NullUtils() { }
 

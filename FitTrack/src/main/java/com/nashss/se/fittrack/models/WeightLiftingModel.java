@@ -2,6 +2,9 @@ package com.nashss.se.fittrack.models;
 
 import java.util.Objects;
 
+/**
+ * Represents a Weightlifting exercise.
+ */
 public class WeightLiftingModel implements Exercise {
 
     private String name;
@@ -9,6 +12,13 @@ public class WeightLiftingModel implements Exercise {
     private int sets;
     private int reps;
 
+    /**
+     * Instantiates a WeightLiftingModel object.
+     * @param name the name of the exercise.
+     * @param weight the weight used.
+     * @param sets the sets completed.
+     * @param reps the reps completed.
+     */
     public WeightLiftingModel(String name, int weight, int sets, int reps) {
         this.name = name;
         this.weight = weight;
@@ -72,7 +82,7 @@ public class WeightLiftingModel implements Exercise {
     public int hashCode() {
         return Objects.hash(name, weight, sets, reps);
     }
-
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }

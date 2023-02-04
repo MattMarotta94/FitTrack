@@ -2,11 +2,20 @@ package com.nashss.se.fittrack.models;
 
 import java.util.Objects;
 
+/**
+ * Represents a CardioModel object.
+ */
 public class CardioModel implements Exercise {
     private String name;
     private double distance;
     private double time;
 
+    /**
+     * Instantiates a CardioModel object.
+     * @param name the name of the exercise.
+     * @param distance the distance covered.
+     * @param time the time taken to complete the exercise.
+     */
     public CardioModel(String name, double distance, double time) {
         this.name = name;
         this.distance = distance;
@@ -48,7 +57,8 @@ public class CardioModel implements Exercise {
             return false;
         }
         CardioModel that = (CardioModel) o;
-        return Double.compare(that.distance, distance) == 0 && Double.compare(that.time, time) == 0 && Objects.equals(name, that.name);
+        return Double.compare(that.distance, distance) == 0 && Double.compare(that.time, time) == 0 &&
+                Objects.equals(name, that.name);
     }
 
     @Override
@@ -56,7 +66,7 @@ public class CardioModel implements Exercise {
         return Objects.hash(name, distance, time);
     }
 
-
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }

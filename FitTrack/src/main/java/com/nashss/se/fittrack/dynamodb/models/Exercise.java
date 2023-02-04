@@ -7,6 +7,9 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 import java.util.Set;
 
+/**
+ * Represents a record in the exercise table.
+ */
 @DynamoDBTable(tableName = "exercise")
 public class Exercise {
 

@@ -5,13 +5,22 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-
+/**
+ * Represents a workout object.
+ */
 public class WorkoutModel {
     private String name;
     private Date date;
     private String notes;
     private List<Exercise> exerciseList;
 
+    /**
+     * Instantiates a WorkoutModel object.
+     * @param name the name of the workout.
+     * @param date the date the workout was created.
+     * @param notes the notes.
+     * @param exerciseList the list of exercise objects done during that workout.
+     */
     public WorkoutModel(String name, Date date, String notes, List<Exercise> exerciseList) {
         this.name = name;
         this.date = date;
@@ -44,7 +53,8 @@ public class WorkoutModel {
             return false;
         }
         WorkoutModel that = (WorkoutModel) o;
-        return Objects.equals(name, that.name) && Objects.equals(date, that.date) && Objects.equals(notes, that.notes) && Objects.equals(exerciseList, that.exerciseList);
+        return Objects.equals(name, that.name) && Objects.equals(date, that.date) &&
+                Objects.equals(notes, that.notes) && Objects.equals(exerciseList, that.exerciseList);
     }
 
     @Override
@@ -52,7 +62,7 @@ public class WorkoutModel {
         return Objects.hash(name, date, notes, exerciseList);
     }
 
-
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }
