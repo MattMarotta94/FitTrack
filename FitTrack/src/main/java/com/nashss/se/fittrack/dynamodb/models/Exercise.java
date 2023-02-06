@@ -10,7 +10,7 @@ import java.util.Set;
 /**
  * Represents a record in the exercise table.
  */
-@DynamoDBTable(tableName = "exercise")
+@DynamoDBTable(tableName = "exercises")
 public class Exercise {
 
     private String exerciseType;
