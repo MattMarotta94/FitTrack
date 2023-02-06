@@ -1,11 +1,8 @@
 package com.nashss.se.fittrack.dynamodb.models;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-
-import java.util.Set;
 
 /**
  * Represents a record in the exercise table.
@@ -15,8 +12,6 @@ public class Exercise {
 
     private String exerciseType;
     private String exerciseName;
-
-    private Set<String> metrics;
 
     @DynamoDBHashKey(attributeName = "exercise_type")
     public String getExerciseType() {
@@ -36,12 +31,4 @@ public class Exercise {
         this.exerciseName = exerciseName;
     }
 
-    @DynamoDBAttribute(attributeName = "metric")
-    public Set<String> getMetrics() {
-        return this.metrics;
-    }
-
-    public void setMetrics(Set<String> metrics) {
-        this.metrics = metrics;
-    }
 }
