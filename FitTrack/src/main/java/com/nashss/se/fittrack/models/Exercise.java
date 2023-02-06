@@ -1,83 +1,45 @@
 package com.nashss.se.fittrack.models;
 
 /**
- * An interface representing a generic exercise class.
+ * Implementation of the exercise class.
  */
-public interface Exercise {
-
-    //Getter Methods
-
-    default String getName() {
-        return null;
-    }
-
-    default int getWeight() {
-        return 0;
-    }
-
-    default int getSets() {
-        return 0;
-    }
-
-    default int getReps() {
-        return 0;
-    }
-
-    default double getDistance() {
-        return 0;
-    }
-
-    default double getTime() {
-        return 0;
-    }
-
-    //Setter Methods
+public class Exercise {
+    private String name;
+    private String type;
+    private String description;
 
     /**
-     * Sets the name of the exercise.
+     * Instantiation of an Exercise object.
      * @param name the name of the exercise.
+     * @param type the type of exercise.
      */
-    default void setName(String name) {
-
+    public Exercise(String name, String type, String description) {
+        this.name = name;
+        this.type = type;
+        this.description = description;
     }
 
-    /**
-     * Sets the weight used during an exercise.
-     * @param weight the weight used.
-     */
-    default void setWeight(int weight) {
-
+    public String getName() {
+        return name;
     }
 
-    /**
-     * Sets the number of sets completed for an exercise.
-     * @param sets the number of sets completed.
-     */
-    default void setSets(int sets) {
-
+    public void setName(String name) {
+        this.name = name;
     }
 
-    /**
-     * Sets the number of repetitions completed for an exercise.
-     * @param reps the number of reps completed.
-     */
-    default void setReps(int reps) {
-
+    public String getType() {
+        return type;
     }
 
-    /**
-     * Sets the distance travelled during an exercise.
-     * @param distance the distance travelled.
-     */
-    default void setDistance(double distance) {
-
+    public void setType(String type) {
+        this.type = type;
     }
 
-    /**
-     * Sets the time it took for an exercise to be completed.
-     * @param time the time to completion.
-     */
-    default void setTime(double time) {
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
