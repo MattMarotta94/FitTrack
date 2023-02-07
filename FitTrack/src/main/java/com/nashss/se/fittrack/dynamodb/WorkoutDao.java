@@ -23,6 +23,7 @@ public class WorkoutDao {
     @Inject
     public WorkoutDao(DynamoDBMapper dynamoDBMapper) {
         this.dynamoDBMapper = dynamoDBMapper;
+
     }
 
     /**

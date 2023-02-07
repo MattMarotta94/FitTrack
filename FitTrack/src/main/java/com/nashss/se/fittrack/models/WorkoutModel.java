@@ -11,21 +11,18 @@ import java.util.Objects;
 public class WorkoutModel {
     private String name;
     private Date date;
-    private String notes;
-    private List<Exercise> exerciseList;
+    private List<String> notes;
 
     /**
      * Instantiates a WorkoutModel object.
      * @param name the name of the workout.
      * @param date the date the workout was created.
-     * @param notes the notes.
-     * @param exerciseList the list of exercise objects done during that workout.
+     * @param notes the notes for each exercise added into the workout.
      */
-    public WorkoutModel(String name, Date date, String notes, List<Exercise> exerciseList) {
+    public WorkoutModel(String name, Date date, List<String> notes) {
         this.name = name;
         this.date = date;
-        this.notes = notes;
-        this.exerciseList = new ArrayList<>();
+        this.notes = new ArrayList<>();
     }
 
     public String getName() {
@@ -36,12 +33,8 @@ public class WorkoutModel {
         return date;
     }
 
-    public String getNotes() {
+    public List<String> getNotes() {
         return notes;
-    }
-
-    public List<Exercise> getExerciseList() {
-        return exerciseList;
     }
 
     @Override
@@ -54,12 +47,12 @@ public class WorkoutModel {
         }
         WorkoutModel that = (WorkoutModel) o;
         return Objects.equals(name, that.name) && Objects.equals(date, that.date) &&
-                Objects.equals(notes, that.notes) && Objects.equals(exerciseList, that.exerciseList);
+                Objects.equals(notes, that.notes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, date, notes, exerciseList);
+        return Objects.hash(name, date, notes);
     }
 
     //CHECKSTYLE:OFF:Builder
@@ -70,8 +63,7 @@ public class WorkoutModel {
     public static class Builder {
         private String name;
         private Date date;
-        private String notes;
-        private List<Exercise> exerciseList;
+        private List<String> notes;
 
         public Builder withName(String name) {
             this.name = name;
@@ -83,18 +75,13 @@ public class WorkoutModel {
             return this;
         }
 
-        public Builder withNotes(String notes) {
+        public Builder withNotes(List<String> notes) {
             this.notes = notes;
             return this;
         }
 
-        public Builder withExerciseList(List<Exercise> exerciseList) {
-            this.exerciseList = exerciseList;
-            return this;
-        }
-
         public WorkoutModel build() {
-            return new WorkoutModel(name, date, notes, exerciseList);
+            return new WorkoutModel(name, date, notes);
         }
     }
 

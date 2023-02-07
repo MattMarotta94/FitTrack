@@ -5,7 +5,7 @@
         "Item": {
           "name": {"S":  "Leg day"},
           "date": {"S":  "2023-02-06"},
-          "notes": {"S":  "Felt like I could go heavier on squats."},
+          "notes": {"SS":  ["Felt like I could go heavier on squats.", "Too many lunges."]},
           "exerciseList": {"S": "[]"}
         }
       }

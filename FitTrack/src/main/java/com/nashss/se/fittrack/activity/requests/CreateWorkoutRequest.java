@@ -1,5 +1,5 @@
 package com.nashss.se.fittrack.activity.requests;
-import com.nashss.se.fittrack.models.Exercise;
+import com.nashss.se.fittrack.models.ExerciseModel;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
@@ -17,20 +17,20 @@ public class CreateWorkoutRequest {
     private final String name;
     private final Date date;
     private final String notes;
-    private final List<Exercise> exerciseList;
+    private final List<ExerciseModel> exerciseModelList;
 
     /**
      * Instantiates a new CreateWorkoutRequest object.
      * @param name the name of the workout.
      * @param date the date the workout was created.
      * @param notes any notes logged by the user.
-     * @param exerciseList a list of exercise objects.
+     * @param exerciseModelList a list of exercise objects.
      */
-    private CreateWorkoutRequest(String name, Date date, String notes, List<Exercise> exerciseList) {
+    private CreateWorkoutRequest(String name, Date date, String notes, List<ExerciseModel> exerciseModelList) {
         this.name = name;
         this.date = date;
         this.notes = notes;
-        this.exerciseList = exerciseList;
+        this.exerciseModelList = exerciseModelList;
     }
 
     public String getName() {
@@ -45,8 +45,8 @@ public class CreateWorkoutRequest {
         return notes;
     }
 
-    public List<Exercise> getExerciseList() {
-        return copyToList(exerciseList);
+    public List<ExerciseModel> getExerciseList() {
+        return copyToList(exerciseModelList);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class CreateWorkoutRequest {
                 "name='" + name + '\'' +
                 ", date=" + date +
                 ", notes='" + notes + '\'' +
-                ", exerciseList=" + exerciseList +
+                ", exerciseList=" + exerciseModelList +
                 '}';
     }
     //CHECKSTYLE:OFF:Builder
@@ -68,7 +68,7 @@ public class CreateWorkoutRequest {
         private String name;
         private Date date;
         private String notes;
-        private List<Exercise> exerciseList;
+        private List<ExerciseModel> exerciseModelList;
         //CHECKSTYLE:OFF:Builder
         public Builder withName(String name) {
             this.name = name;
@@ -85,13 +85,13 @@ public class CreateWorkoutRequest {
             return this;
         }
 
-        public Builder withExerciseList(List<Exercise> exerciseList) {
-            this.exerciseList = exerciseList;
+        public Builder withExerciseList(List<ExerciseModel> exerciseModelList) {
+            this.exerciseModelList = exerciseModelList;
             return this;
         }
 
         public CreateWorkoutRequest build() {
-            return new CreateWorkoutRequest(name, date, notes, exerciseList);
+            return new CreateWorkoutRequest(name, date, notes, exerciseModelList);
         }
     }
 }

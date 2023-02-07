@@ -1,5 +1,4 @@
 package com.nashss.se.fittrack.dynamodb.models;
-import com.nashss.se.fittrack.models.Exercise;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
@@ -17,7 +16,7 @@ public class Workout {
 
     private String name;
     private Date date;
-    private String notes;
+    private List<String> notes;
     private List<Exercise> exerciseList;
 
     @DynamoDBHashKey(attributeName = "date")
@@ -39,16 +38,23 @@ public class Workout {
     }
 
     @DynamoDBAttribute(attributeName = "notes")
-    public String getNotes() {
+    public List<String> getNotes() {
         return notes;
     }
 
-    public void setNotes(String notes) {
+    public void setNotes(List<String> notes) {
         this.notes = notes;
     }
 
+    /**
+     * Returns the list of exercises associated with this Workout, null if there are none.
+     * @return list of exercises for this workout.
+     */
     @DynamoDBAttribute(attributeName = "exercises")
     public List<Exercise> getExerciseList() {
+        if (null == exerciseList) {
+            return null;
+        }
         return exerciseList;
     }
 

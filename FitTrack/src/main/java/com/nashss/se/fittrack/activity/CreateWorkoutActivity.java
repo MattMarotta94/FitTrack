@@ -10,8 +10,10 @@ import com.nashss.se.fittrack.models.WorkoutModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.Collections;
 
+import javax.inject.Inject;
 /**
  * Implementation of the CreateWorkoutActivity for the FitTrack's CreateWorkout API.
  * This API allows users to create a new workout entry with a date, name, and empty notes/exercise fields.
@@ -44,8 +46,8 @@ public class CreateWorkoutActivity {
 
         Workout newWorkout = new Workout();
         newWorkout.setName(createWorkoutRequest.getName());
-        newWorkout.setNotes(createWorkoutRequest.getNotes());
-        newWorkout.setExerciseList(createWorkoutRequest.getExerciseList());
+        newWorkout.setNotes(Collections.singletonList(createWorkoutRequest.getNotes()));
+        newWorkout.setExerciseList(new ArrayList<>());
         newWorkout.setDate(createWorkoutRequest.getDate());
 
         workoutDao.saveWorkout(newWorkout);
