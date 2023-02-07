@@ -16,7 +16,8 @@
       "PutRequest": {
         "Item": {
           "exercise_type": {"S":  "WeightLifting"},
-          "exercise_name": {"S": "Squats"}
+          "exercise_name": {"S": "Squats"},
+          "description": {"S": "Barbell squats"}
         }
       }
     }
