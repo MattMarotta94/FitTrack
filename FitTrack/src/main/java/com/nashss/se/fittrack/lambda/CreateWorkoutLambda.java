@@ -17,10 +17,10 @@ public class CreateWorkoutLambda
             CreateWorkoutRequest unauthenticatedRequest = input.fromBody(CreateWorkoutRequest.class);
             return input.fromUserClaims(claims ->
                     CreateWorkoutRequest.builder()
+                            .withEmail(claims.get("email"))
                             .withName(unauthenticatedRequest.getName())
                             .withDate(unauthenticatedRequest.getDate())
                             .withNotes(unauthenticatedRequest.getNotes())
-                            .withExerciseList(unauthenticatedRequest.getExerciseList())
                             .build());
             }, (request, serviceComponent) -> serviceComponent.provideCreateWorkoutActivity().handleRequest(request)
         );

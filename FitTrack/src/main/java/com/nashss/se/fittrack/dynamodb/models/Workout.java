@@ -2,9 +2,9 @@ package com.nashss.se.fittrack.dynamodb.models;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,16 +15,17 @@ import java.util.Objects;
 public class Workout {
 
     private String name;
-    private Date date;
+    private String date;
     private List<String> notes;
     private List<Exercise> exerciseList;
+    private String email;
 
-    @DynamoDBHashKey(attributeName = "date")
-    public Date getDate() {
+    @DynamoDBRangeKey(attributeName = "date")
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -60,6 +61,15 @@ public class Workout {
 
     public void setExerciseList(List<Exercise> exerciseList) {
         this.exerciseList = exerciseList;
+    }
+
+    @DynamoDBHashKey(attributeName = "email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

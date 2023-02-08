@@ -1,7 +1,6 @@
 package com.nashss.se.fittrack.models;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,7 +9,8 @@ import java.util.Objects;
  */
 public class WorkoutModel {
     private String name;
-    private Date date;
+    private String date;
+    private String email;
     private List<String> notes;
 
     /**
@@ -19,22 +19,27 @@ public class WorkoutModel {
      * @param date the date the workout was created.
      * @param notes the notes for each exercise added into the workout.
      */
-    public WorkoutModel(String name, Date date, List<String> notes) {
+    public WorkoutModel(String name, String date, List<String> notes, String email) {
         this.name = name;
         this.date = date;
         this.notes = new ArrayList<>();
+        this.email = email;
     }
 
     public String getName() {
         return name;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
     public List<String> getNotes() {
         return notes;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     @Override
@@ -47,7 +52,7 @@ public class WorkoutModel {
         }
         WorkoutModel that = (WorkoutModel) o;
         return Objects.equals(name, that.name) && Objects.equals(date, that.date) &&
-                Objects.equals(notes, that.notes);
+                Objects.equals(notes, that.notes) && Objects.equals(email, that.email);
     }
 
     @Override
@@ -62,7 +67,8 @@ public class WorkoutModel {
 
     public static class Builder {
         private String name;
-        private Date date;
+        private String date;
+        private String email;
         private List<String> notes;
 
         public Builder withName(String name) {
@@ -70,7 +76,7 @@ public class WorkoutModel {
             return this;
         }
 
-        public Builder withDate(Date date) {
+        public Builder withDate(String date) {
             this.date = date;
             return this;
         }
@@ -80,8 +86,13 @@ public class WorkoutModel {
             return this;
         }
 
+        public Builder withEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
         public WorkoutModel build() {
-            return new WorkoutModel(name, date, notes);
+            return new WorkoutModel(name, date, notes, email);
         }
     }
 

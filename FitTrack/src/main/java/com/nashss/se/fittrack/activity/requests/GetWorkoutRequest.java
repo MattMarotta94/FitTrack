@@ -1,18 +1,16 @@
 package com.nashss.se.fittrack.activity.requests;
 
-import java.util.Date;
-
 /**
  * Implementation of the GetWorkoutRequest for the FitTrack's GetWorkout API.
  */
 public class GetWorkoutRequest {
-    private final Date date;
+    private final String date;
 
-    private GetWorkoutRequest(Date date) {
+    private GetWorkoutRequest(String date) {
         this.date = date;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -28,9 +26,9 @@ public class GetWorkoutRequest {
     }
 
     public static class Builder {
-        private Date date;
+        private String date;
 
-        public Builder withDate(Date date) {
+        public Builder withDate(String date) {
             this.date = date;
             return this;
         }

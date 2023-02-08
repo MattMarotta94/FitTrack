@@ -11,7 +11,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.inject.Inject;
 /**
@@ -46,7 +45,7 @@ public class CreateWorkoutActivity {
 
         Workout newWorkout = new Workout();
         newWorkout.setName(createWorkoutRequest.getName());
-        newWorkout.setNotes(Collections.singletonList(createWorkoutRequest.getNotes()));
+        newWorkout.setNotes(createWorkoutRequest.getNotes());
         newWorkout.setExerciseList(new ArrayList<>());
         newWorkout.setDate(createWorkoutRequest.getDate());
 
