@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static com.nashss.se.fittrack.utils.CollectionUtils.copyToList;
+
 /**
  * Represents a workout object.
  */
@@ -35,7 +37,7 @@ public class WorkoutModel {
     }
 
     public List<String> getNotes() {
-        return notes;
+        return copyToList(notes);
     }
 
     public String getEmail() {
@@ -57,7 +59,7 @@ public class WorkoutModel {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, date, notes);
+        return Objects.hash(name, date, notes, email);
     }
 
     //CHECKSTYLE:OFF:Builder
@@ -82,7 +84,7 @@ public class WorkoutModel {
         }
 
         public Builder withNotes(List<String> notes) {
-            this.notes = notes;
+            this.notes = copyToList(notes);
             return this;
         }
 

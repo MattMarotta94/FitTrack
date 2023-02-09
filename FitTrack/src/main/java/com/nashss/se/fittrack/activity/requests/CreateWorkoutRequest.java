@@ -1,5 +1,4 @@
 package com.nashss.se.fittrack.activity.requests;
-import com.nashss.se.fittrack.dynamodb.models.Exercise;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
@@ -13,8 +12,9 @@ import java.util.List;
 public class CreateWorkoutRequest {
     private final String name;
     private final String date;
-    private final String email;
     private final List<String> notes;
+
+    private final String email;
 
     /**
      * Instantiates a new CreateWorkoutRequest object.
@@ -49,8 +49,9 @@ public class CreateWorkoutRequest {
     public String toString() {
         return "CreateWorkoutRequest{" +
                 "name='" + name + '\'' +
-                ", date=" + date +
-                ", notes='" + notes + '\'' +
+                ", date='" + date + '\'' +
+                ", notes=" + notes +
+                ", email='" + email + '\'' +
                 '}';
     }
     //CHECKSTYLE:OFF:Builder
@@ -86,8 +87,6 @@ public class CreateWorkoutRequest {
             this.email = email;
             return this;
         }
-
-
 
         public CreateWorkoutRequest build() {
             return new CreateWorkoutRequest(name, date, notes, email);

@@ -1,9 +1,7 @@
 package com.nashss.se.fittrack.dynamodb.models;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.amazonaws.services.dynamodbv2.datamodeling.*;
+import com.nashss.se.fittrack.converters.NotesListConverter;
 
 import java.util.List;
 import java.util.Objects;
@@ -37,7 +35,7 @@ public class Workout {
     public void setName(String name) {
         this.name = name;
     }
-
+    @DynamoDBTypeConverted(converter = NotesListConverter.class)
     @DynamoDBAttribute(attributeName = "notes")
     public List<String> getNotes() {
         return notes;

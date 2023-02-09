@@ -3,10 +3,10 @@
     {
       "PutRequest": {
         "Item": {
+          "email": {"S":  "mcmarotta48@gmail.com"},
           "name": {"S":  "Leg day"},
           "date": {"S":  "2023-02-06"},
-          "notes": {"SS":  ["Felt like I could go heavier on squats.", "Too many lunges."]},
-          "exerciseList": {"S": "[]"}
+          "notes": {"SS":  ["Felt like I could go heavier on squats.", "Too many lunges."]}
         }
       }
     }
