@@ -247,11 +247,15 @@ Resources:
     Type: AWS::DynamoDB::Table
     Properties:
       AttributeDefinitions:
+        - AttributeName: "email"
+          AttributeType: "S"
         - AttributeName: "date"
           AttributeType: "S"
       KeySchema:
-        - AttributeName: "date"
+        - AttributeName: "email"
           KeyType: "HASH"
+        - AttributeName: "date"
+          KeyType: "RANGE"
       BillingMode: "PAY_PER_REQUEST"
       TableName: "workouts"
 
@@ -270,3 +274,33 @@ Resources:
            KeyType: "RANGE"
       BillingMode: "PAY_PER_REQUEST"
       TableName: "exercises"
+
+#-----------------------------------------------------
+# The outputs defined below will be printed
+#  to the screen after a successful deploy
+#-----------------------------------------------------
+
+Outputs:
+
+  CognitoUserPoolId:
+    Value: !Ref UserPool
+    Description: "The Cognito User Pool ID (COGNITO_USER_POOL_ID)."
+  CognitoUserPoolClientId:
+    Value: !Ref UserPoolClient
+    Description: "The Cognito User Pool Client ID (COGNITO_USER_POOL_CLIENT_ID)."
+  CognitoDomain:
+    Value: !Sub "${CognitoDomain}.auth.us-east-2.amazoncognito.com"
+    Description: "The Cognito Domain (COGNITO_DOMAIN)."
+
+  ApiBaseUrl:
+    Description: "API Gateway endpoint base URL for Prod stage (API_BASE_URL)."
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+
+  CognitoRedirectSignin:
+    Description: "The URL of the deployed front-end application (COGNITO_REDIRECT_SIGNIN)."
+    Value: !Sub "https://${CloudfrontDistribution.DomainName}"
+    Condition: DeployCloudFront
+  CognitoRedirectSignout:
+    Description: "The URL of the deployed front-end application (COGNITO_REDIRECT_SIGNOUT)."
+    Value: !Sub "https://${CloudfrontDistribution.DomainName}"
+    Condition: DeployCloudFront

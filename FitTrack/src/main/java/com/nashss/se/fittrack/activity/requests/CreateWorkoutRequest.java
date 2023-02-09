@@ -1,13 +1,7 @@
 package com.nashss.se.fittrack.activity.requests;
-import com.nashss.se.fittrack.models.Exercise;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-
-import java.util.Date;
-import java.util.List;
-
-import static com.nashss.se.fittrack.utils.CollectionUtils.copyToList;
 
 /**
  * Implementation of the CreateWorkoutRequest.
@@ -15,29 +9,29 @@ import static com.nashss.se.fittrack.utils.CollectionUtils.copyToList;
 @JsonDeserialize(builder = CreateWorkoutRequest.Builder.class)
 public class CreateWorkoutRequest {
     private final String name;
-    private final Date date;
+    private final String date;
     private final String notes;
-    private final List<Exercise> exerciseList;
+
+    private final String email;
 
     /**
      * Instantiates a new CreateWorkoutRequest object.
      * @param name the name of the workout.
      * @param date the date the workout was created.
      * @param notes any notes logged by the user.
-     * @param exerciseList a list of exercise objects.
      */
-    private CreateWorkoutRequest(String name, Date date, String notes, List<Exercise> exerciseList) {
+    private CreateWorkoutRequest(String name, String date, String notes, String email) {
         this.name = name;
         this.date = date;
         this.notes = notes;
-        this.exerciseList = exerciseList;
+        this.email = email;
     }
 
     public String getName() {
         return name;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -45,17 +39,17 @@ public class CreateWorkoutRequest {
         return notes;
     }
 
-    public List<Exercise> getExerciseList() {
-        return copyToList(exerciseList);
+    public String getEmail() {
+        return email;
     }
 
     @Override
     public String toString() {
         return "CreateWorkoutRequest{" +
                 "name='" + name + '\'' +
-                ", date=" + date +
-                ", notes='" + notes + '\'' +
-                ", exerciseList=" + exerciseList +
+                ", date='" + date + '\'' +
+                ", notes=" + notes +
+                ", email='" + email + '\'' +
                 '}';
     }
     //CHECKSTYLE:OFF:Builder
@@ -66,16 +60,18 @@ public class CreateWorkoutRequest {
     @JsonPOJOBuilder
     public static class Builder {
         private String name;
-        private Date date;
+        private String date;
         private String notes;
-        private List<Exercise> exerciseList;
+
+        private String email;
+
         //CHECKSTYLE:OFF:Builder
         public Builder withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder withDate(Date date) {
+        public Builder withDate(String date) {
             this.date = date;
             return this;
         }
@@ -85,13 +81,13 @@ public class CreateWorkoutRequest {
             return this;
         }
 
-        public Builder withExerciseList(List<Exercise> exerciseList) {
-            this.exerciseList = exerciseList;
+        public Builder withEmail(String email) {
+            this.email = email;
             return this;
         }
 
         public CreateWorkoutRequest build() {
-            return new CreateWorkoutRequest(name, date, notes, exerciseList);
+            return new CreateWorkoutRequest(name, date, notes, email);
         }
     }
 }

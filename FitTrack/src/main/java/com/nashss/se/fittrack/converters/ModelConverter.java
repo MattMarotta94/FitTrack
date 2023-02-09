@@ -1,6 +1,8 @@
 package com.nashss.se.fittrack.converters;
 
+import com.nashss.se.fittrack.dynamodb.models.Exercise;
 import com.nashss.se.fittrack.dynamodb.models.Workout;
+import com.nashss.se.fittrack.models.ExerciseModel;
 import com.nashss.se.fittrack.models.WorkoutModel;
 
 /**
@@ -14,11 +16,24 @@ public class ModelConverter {
      * @return the converted workout.
      */
     public WorkoutModel toWorkoutModel(Workout workout) {
+
         return WorkoutModel.builder()
                 .withDate(workout.getDate())
                 .withName(workout.getName())
                 .withNotes(workout.getNotes())
-                .withExerciseList(workout.getExerciseList())
+                .build();
+    }
+
+    /**
+     * Converts a provided Exercise into an ExerciseModel representation.
+     * @param exercise the Exercise to convert to ExerciseModel.
+     * @return the converted ExerciseModel with fields mapped from exercise.
+     */
+    public ExerciseModel toExerciseModel(Exercise exercise) {
+        return ExerciseModel.builder()
+                .withName(exercise.getExerciseName())
+                .withType(exercise.getExerciseType())
+                .withDescription(exercise.getDescription())
                 .build();
     }
 }

@@ -4,7 +4,6 @@ import com.nashss.se.fittrack.dynamodb.models.Exercise;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,11 +12,11 @@ import java.util.List;
 @JsonDeserialize(builder = UpdateWorkoutRequest.Builder.class)
 public class UpdateWorkoutRequest {
     private final String name;
-    private final Date date;
+    private final String date;
     private final String notes;
     private final List<Exercise> exerciseList;
 
-    private UpdateWorkoutRequest(String name, Date date, String notes, List<Exercise> exerciseList) {
+    private UpdateWorkoutRequest(String name, String date, String notes, List<Exercise> exerciseList) {
         this.name = name;
         this.date = date;
         this.notes = notes;
@@ -28,7 +27,7 @@ public class UpdateWorkoutRequest {
         return name;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -58,7 +57,7 @@ public class UpdateWorkoutRequest {
     @JsonPOJOBuilder
     public static class Builder {
         private String name;
-        private Date date;
+        private String date;
         private String notes;
         private List<Exercise> exerciseList;
 
@@ -67,7 +66,7 @@ public class UpdateWorkoutRequest {
             return this;
         }
 
-        public Builder withDate(Date date) {
+        public Builder withDate(String date) {
             this.date = date;
             return this;
         }

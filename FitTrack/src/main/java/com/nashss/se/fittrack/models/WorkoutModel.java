@@ -1,8 +1,5 @@
 package com.nashss.se.fittrack.models;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -10,29 +7,29 @@ import java.util.Objects;
  */
 public class WorkoutModel {
     private String name;
-    private Date date;
+    private String date;
+    private String email;
     private String notes;
-    private List<Exercise> exerciseList;
 
     /**
      * Instantiates a WorkoutModel object.
      * @param name the name of the workout.
      * @param date the date the workout was created.
-     * @param notes the notes.
-     * @param exerciseList the list of exercise objects done during that workout.
+     * @param notes the notes for each exercise added into the workout.
+     * @param email the email for the users profile determined using Cognito.
      */
-    public WorkoutModel(String name, Date date, String notes, List<Exercise> exerciseList) {
+    public WorkoutModel(String name, String date, String notes, String email) {
         this.name = name;
         this.date = date;
         this.notes = notes;
-        this.exerciseList = new ArrayList<>();
+        this.email = email;
     }
 
     public String getName() {
         return name;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -40,8 +37,8 @@ public class WorkoutModel {
         return notes;
     }
 
-    public List<Exercise> getExerciseList() {
-        return exerciseList;
+    public String getEmail() {
+        return email;
     }
 
     @Override
@@ -54,12 +51,12 @@ public class WorkoutModel {
         }
         WorkoutModel that = (WorkoutModel) o;
         return Objects.equals(name, that.name) && Objects.equals(date, that.date) &&
-                Objects.equals(notes, that.notes) && Objects.equals(exerciseList, that.exerciseList);
+                Objects.equals(notes, that.notes) && Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, date, notes, exerciseList);
+        return Objects.hash(name, date, notes, email);
     }
 
     //CHECKSTYLE:OFF:Builder
@@ -69,16 +66,16 @@ public class WorkoutModel {
 
     public static class Builder {
         private String name;
-        private Date date;
+        private String date;
+        private String email;
         private String notes;
-        private List<Exercise> exerciseList;
 
         public Builder withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder withDate(Date date) {
+        public Builder withDate(String date) {
             this.date = date;
             return this;
         }
@@ -88,13 +85,13 @@ public class WorkoutModel {
             return this;
         }
 
-        public Builder withExerciseList(List<Exercise> exerciseList) {
-            this.exerciseList = exerciseList;
+        public Builder withEmail(String email) {
+            this.email = email;
             return this;
         }
 
         public WorkoutModel build() {
-            return new WorkoutModel(name, date, notes, exerciseList);
+            return new WorkoutModel(name, date, notes, email);
         }
     }
 

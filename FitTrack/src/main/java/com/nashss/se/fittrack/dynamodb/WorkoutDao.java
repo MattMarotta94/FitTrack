@@ -3,8 +3,6 @@ import com.nashss.se.fittrack.dynamodb.models.Workout;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 
-import java.util.Date;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -23,6 +21,7 @@ public class WorkoutDao {
     @Inject
     public WorkoutDao(DynamoDBMapper dynamoDBMapper) {
         this.dynamoDBMapper = dynamoDBMapper;
+
     }
 
     /**
@@ -30,7 +29,7 @@ public class WorkoutDao {
      * @param date the date the workout was created
      * @return the workout.
      */
-    public Workout getWorkout(Date date) {
+    public Workout getWorkout(String date) {
         Workout workout = this.dynamoDBMapper.load(Workout.class, date);
 
         return workout;
