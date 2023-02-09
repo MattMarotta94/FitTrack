@@ -23,7 +23,7 @@ module.exports = {
     usedExports: true
   },
   entry: {
-    searchPlaylists: path.resolve(__dirname, 'src', 'pages', 'searchPlaylists.js'),
+    createWorkout: path.resolve(__dirname, 'src', 'pages', 'createWorkout.js'),
   },
   output: {
     path: path.resolve(__dirname, 'build', 'assets'),
