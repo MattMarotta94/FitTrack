@@ -1,10 +1,6 @@
 package com.nashss.se.fittrack.models;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-
-import static com.nashss.se.fittrack.utils.CollectionUtils.copyToList;
 
 /**
  * Represents a workout object.
@@ -13,18 +9,19 @@ public class WorkoutModel {
     private String name;
     private String date;
     private String email;
-    private List<String> notes;
+    private String notes;
 
     /**
      * Instantiates a WorkoutModel object.
      * @param name the name of the workout.
      * @param date the date the workout was created.
      * @param notes the notes for each exercise added into the workout.
+     * @param email the email for the users profile determined using Cognito.
      */
-    public WorkoutModel(String name, String date, List<String> notes, String email) {
+    public WorkoutModel(String name, String date, String notes, String email) {
         this.name = name;
         this.date = date;
-        this.notes = new ArrayList<>();
+        this.notes = notes;
         this.email = email;
     }
 
@@ -36,8 +33,8 @@ public class WorkoutModel {
         return date;
     }
 
-    public List<String> getNotes() {
-        return copyToList(notes);
+    public String getNotes() {
+        return notes;
     }
 
     public String getEmail() {
@@ -71,7 +68,7 @@ public class WorkoutModel {
         private String name;
         private String date;
         private String email;
-        private List<String> notes;
+        private String notes;
 
         public Builder withName(String name) {
             this.name = name;
@@ -83,8 +80,8 @@ public class WorkoutModel {
             return this;
         }
 
-        public Builder withNotes(List<String> notes) {
-            this.notes = copyToList(notes);
+        public Builder withNotes(String notes) {
+            this.notes = notes;
             return this;
         }
 

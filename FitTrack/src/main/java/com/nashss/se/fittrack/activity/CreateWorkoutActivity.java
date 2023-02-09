@@ -11,8 +11,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 
 import javax.inject.Inject;
 /**
@@ -43,16 +41,10 @@ public class CreateWorkoutActivity {
     public CreateWorkoutResult handleRequest(final CreateWorkoutRequest createWorkoutRequest) {
         log.info("Received CreateWorkoutRequest {}", createWorkoutRequest);
 
-        //work in progress
-        List<String> notes = null;
-        if (createWorkoutRequest.getNotes() != null) {
-            notes = new ArrayList<>(createWorkoutRequest.getNotes());
-        }
-
         Workout newWorkout = new Workout();
         newWorkout.setEmail(createWorkoutRequest.getEmail());
         newWorkout.setName(createWorkoutRequest.getName());
-        newWorkout.setNotes(notes);
+        newWorkout.setNotes(createWorkoutRequest.getNotes());
         newWorkout.setExerciseList(new ArrayList<>());
         newWorkout.setDate(createWorkoutRequest.getDate());
 

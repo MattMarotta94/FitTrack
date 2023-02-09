@@ -3,8 +3,6 @@ package com.nashss.se.fittrack.activity.requests;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-import java.util.List;
-
 /**
  * Implementation of the CreateWorkoutRequest.
  */
@@ -12,7 +10,7 @@ import java.util.List;
 public class CreateWorkoutRequest {
     private final String name;
     private final String date;
-    private final List<String> notes;
+    private final String notes;
 
     private final String email;
 
@@ -22,7 +20,7 @@ public class CreateWorkoutRequest {
      * @param date the date the workout was created.
      * @param notes any notes logged by the user.
      */
-    private CreateWorkoutRequest(String name, String date, List<String> notes, String email) {
+    private CreateWorkoutRequest(String name, String date, String notes, String email) {
         this.name = name;
         this.date = date;
         this.notes = notes;
@@ -37,7 +35,7 @@ public class CreateWorkoutRequest {
         return date;
     }
 
-    public List<String> getNotes() {
+    public String getNotes() {
         return notes;
     }
 
@@ -63,7 +61,7 @@ public class CreateWorkoutRequest {
     public static class Builder {
         private String name;
         private String date;
-        private List<String> notes;
+        private String notes;
 
         private String email;
 
@@ -78,7 +76,7 @@ public class CreateWorkoutRequest {
             return this;
         }
 
-        public Builder withNotes(List<String> notes) {
+        public Builder withNotes(String notes) {
             this.notes = notes;
             return this;
         }
