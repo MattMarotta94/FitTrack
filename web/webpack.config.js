@@ -24,6 +24,9 @@ module.exports = {
   },
   entry: {
     createWorkout: path.resolve(__dirname, 'src', 'pages', 'createWorkout.js'),
+    homePage: path.resolve(__dirname, 'src', 'pages', 'homePage.js'),
+    getWorkout: path.resolve(__dirname, 'src', 'pages', 'getWorkout.js'),
+    viewWorkout: path.resolve(__dirname, 'src', 'pages', 'viewWorkout.js')
   },
   output: {
     path: path.resolve(__dirname, 'build', 'assets'),
