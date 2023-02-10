@@ -26,7 +26,7 @@ class GetWorkout extends BindingClass {
     constructor() {
         super();
 
-        this.bindClassMethods(['mount', 'displayWorkout'], this);
+        this.bindClassMethods(['mount', 'search', 'displayWorkout'], this);
 
         this.dataStore = new DataStore(EMPTY_DATASTORE_STATE);
         this.header = new Header(this.dataStore);
@@ -37,6 +37,7 @@ class GetWorkout extends BindingClass {
 
     mount() {
         document.getElementById('search-workouts-form').addEventListener('submit', this.search);
+        document.getElementById('search-button').addEventListener('click', this.search);
         document.getElementById('search-button').addEventListener('click', this.displayWorkout);
 
         this.header.addHeaderToPage();
@@ -44,19 +45,35 @@ class GetWorkout extends BindingClass {
         this.client = new FitTrackClient();
     }
 
-    async displayWorkout() {
-        const workoutDate = document.getElementById('search-criteria').value;
-        const workout = this.client.getWorkout(workoutDate);
+    async search(evt) {
+        // Prevent submitting the from from reloading the page.
+        evt.preventDefault();
 
-        const searchButton = document.getElementById('search-button');
-        const origButtonText = searchButton.innerText;
-        searchButton.innerText = 'Loading...';
+        const searchCriteria = document.getElementById('search-criteria').value;
+        const previousSearchCriteria = this.dataStore.get(SEARCH_CRITERIA_KEY);
 
+        // If the user didn't change the search criteria, do nothing
+        if (previousSearchCriteria === searchCriteria) {
+            return;
+        }
+
+        if (searchCriteria) {
+            const results = await this.client.getWorkout(searchCriteria);
+
+            this.dataStore.set('results', results)
+            };
+        } 
+
+    displayWorkout() {
+        const workout = this.dataStore.get('results');
+        if (workout == null) {
+            return
+        }
         document.getElementById('workout-name').innerText = workout.name;
         document.getElementById('workout-date').innerText = workout.date;
         document.getElementById('workout-notes').innerText = workout.notes;
 
-    }
+}
 
 }
 
