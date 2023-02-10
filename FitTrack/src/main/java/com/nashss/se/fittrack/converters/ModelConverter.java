@@ -18,6 +18,7 @@ public class ModelConverter {
     public WorkoutModel toWorkoutModel(Workout workout) {
 
         return WorkoutModel.builder()
+                .withEmail(workout.getEmail())
                 .withDate(workout.getDate())
                 .withName(workout.getName())
                 .withNotes(workout.getNotes())

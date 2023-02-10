@@ -33,7 +33,8 @@ public class GetWorkoutActivity {
      */
     public GetWorkoutResult handleRequest(final GetWorkoutRequest getWorkoutRequest) {
         String requestedDate = getWorkoutRequest.getDate();
-        Workout workout = workoutDao.getWorkout(requestedDate);
+        String requestedEmail = getWorkoutRequest.getEmail();
+        Workout workout = workoutDao.getWorkout(requestedEmail, requestedDate);
         WorkoutModel workoutModel = new ModelConverter().toWorkoutModel(workout);
 
         return GetWorkoutResult.builder()
