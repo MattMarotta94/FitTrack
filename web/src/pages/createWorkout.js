@@ -9,8 +9,9 @@ import DataStore from "../util/DataStore";
 class CreateWorkout extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'submit'], this);
+        this.bindClassMethods(['mount', 'submit', 'redirectToViewWorkout'], this);
         this.dataStore = new DataStore();
+        this.dataStore.addChangeListener(this.redirectToViewWorkout);
         this.header = new Header(this.dataStore);
     
     }
@@ -20,6 +21,7 @@ class CreateWorkout extends BindingClass {
      */
     mount() {
         document.getElementById('create').addEventListener('click', this.submit);
+
 
         this.header.addHeaderToPage();
 
@@ -38,7 +40,7 @@ class CreateWorkout extends BindingClass {
 
         const createButton = document.getElementById('create');
         const origButtonText = createButton.innerText;
-        createButton.innerText = 'Loading...';
+        createButton.innerText = 'Creating...';
 
         const workoutName = document.getElementById('workout-name').value;
         const workoutDate = document.getElementById('date').value;
@@ -51,6 +53,13 @@ class CreateWorkout extends BindingClass {
         });
         this.dataStore.set('workout', workout);
         }
+
+    redirectToViewWorkout() {
+        const workout = this.dataStore.get('workout');
+        if(workout != null) {
+            window.location.href = `/viewWorkout.html?date=${workout.date}`;
+        }
+    }
 
 }
 

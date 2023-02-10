@@ -10,7 +10,7 @@ export default class FitTrackClient extends BindingClass {
     constructor(props = {}) {
         super();
 
-        const methodsToBind = [`clientLoaded`, 'getIdentity', 'login', 'logout', 'createWorkout' ];
+        const methodsToBind = [`clientLoaded`, 'getIdentity', 'login', 'logout', 'createWorkout', 'getWorkout' ];
         this.bindClassMethods(methodsToBind, this);
 
         this.authenticator = new Authenticator();;
@@ -85,6 +85,18 @@ export default class FitTrackClient extends BindingClass {
                     Authorization: `Bearer ${token}`
                 }
             });
+            return response.data.workout;
+        } catch (error) {
+            this.handleError(error, errorCallback)
+        }
+    }
+
+    async getWorkout(date, errorCallback) {
+        try {
+            const token = await this.getTokenOrThrow("Only authenticated users can create workouts.");
+            const response = await this.axiosClient.get(`workouts/${date}`, { headers: {
+                Authorization: `Bearer ${token}`
+            }});
             return response.data.workout;
         } catch (error) {
             this.handleError(error, errorCallback)
