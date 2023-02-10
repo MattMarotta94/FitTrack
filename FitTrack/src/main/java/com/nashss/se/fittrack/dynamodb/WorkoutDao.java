@@ -26,7 +26,8 @@ public class WorkoutDao {
 
     /**
      * Returns the workout corresponding to the specified date.
-     * @param date the date the workout was created
+     * @param date the date the workout was created.
+     * @param email the users email.
      * @return the workout.
      */
     public Workout getWorkout(String email, String date) {

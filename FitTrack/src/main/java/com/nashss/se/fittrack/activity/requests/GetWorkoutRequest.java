@@ -20,7 +20,7 @@ public class GetWorkoutRequest {
         return date;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
 

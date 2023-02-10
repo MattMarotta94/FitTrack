@@ -31,7 +31,7 @@ public class UpdateWorkoutActivity {
      */
     public UpdateWorkoutResult handleRequest(final UpdateWorkoutRequest updateWorkoutRequest) {
 
-      Workout workout = workoutDao.getWorkout("fakeemail", updateWorkoutRequest.getDate());
+        Workout workout = workoutDao.getWorkout("fakeemail", updateWorkoutRequest.getDate());
 
         workout.setDate(updateWorkoutRequest.getDate());
         workout = workoutDao.saveWorkout(workout);
