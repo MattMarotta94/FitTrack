@@ -13,7 +13,10 @@ public class GetWorkoutLambda
     @Override
     public LambdaResponse handleRequest(AuthenticatedLambdaRequest<GetWorkoutRequest> input, Context context) {
         return super.runActivity( () -> {
-            GetWorkoutRequest unauthenticatedRequest = input.fromBody(GetWorkoutRequest.class);
+            GetWorkoutRequest unauthenticatedRequest = input.fromPath( path ->
+                    GetWorkoutRequest.builder()
+                            .withDate(path.get("date"))
+                            .build());
             return input.fromUserClaims(claims ->
                             GetWorkoutRequest.builder()
                                     .withEmail(claims.get("email"))

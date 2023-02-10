@@ -29,8 +29,8 @@ public class WorkoutDao {
      * @param date the date the workout was created
      * @return the workout.
      */
-    public Workout getWorkout(String date) {
-        Workout workout = this.dynamoDBMapper.load(Workout.class, date);
+    public Workout getWorkout(String email, String date) {
+        Workout workout = this.dynamoDBMapper.load(Workout.class, email, date);
 
         return workout;
     }

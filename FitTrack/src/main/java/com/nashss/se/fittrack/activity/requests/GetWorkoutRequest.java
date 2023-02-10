@@ -56,5 +56,6 @@ public class GetWorkoutRequest {
         public GetWorkoutRequest build() {
             return new GetWorkoutRequest(date, email);
         }
+
     }
 }
