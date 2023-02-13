@@ -14,12 +14,14 @@ public class UpdateWorkoutRequest {
     private final String name;
     private final String date;
     private final String notes;
+    private final String email;
     private final List<Exercise> exerciseList;
 
-    private UpdateWorkoutRequest(String name, String date, String notes, List<Exercise> exerciseList) {
+    private UpdateWorkoutRequest(String name, String date, String notes, String email, List<Exercise> exerciseList) {
         this.name = name;
         this.date = date;
         this.notes = notes;
+        this.email = email;
         this.exerciseList = exerciseList;
     }
 
@@ -35,6 +37,8 @@ public class UpdateWorkoutRequest {
         return notes;
     }
 
+    public String getEmail() {return email;}
+
     public List<Exercise> getExerciseList() {
         return exerciseList;
     }
@@ -44,11 +48,13 @@ public class UpdateWorkoutRequest {
     public String toString() {
         return "UpdateWorkoutRequest{" +
                 "name='" + name + '\'' +
-                ", date=" + date +
+                ", date='" + date + '\'' +
                 ", notes='" + notes + '\'' +
+                ", email='" + email + '\'' +
                 ", exerciseList=" + exerciseList +
                 '}';
     }
+
     //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
@@ -59,6 +65,7 @@ public class UpdateWorkoutRequest {
         private String name;
         private String date;
         private String notes;
+        private String email;
         private List<Exercise> exerciseList;
 
         public Builder withName(String name) {
@@ -76,13 +83,18 @@ public class UpdateWorkoutRequest {
             return this;
         }
 
+        public Builder withEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
         public Builder withExerciseList(List<Exercise> exerciseList) {
             this.exerciseList = exerciseList;
             return this;
         }
 
         public UpdateWorkoutRequest build() {
-            return new UpdateWorkoutRequest(name, date, notes, exerciseList);
+            return new UpdateWorkoutRequest(name, date, notes, email, exerciseList);
         }
     }
 }
