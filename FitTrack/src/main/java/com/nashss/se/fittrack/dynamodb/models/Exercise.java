@@ -27,7 +27,7 @@ public class Exercise {
         this.exerciseType = exerciseType;
     }
 
-    @DynamoDBRangeKey(attributeName = "exercise_name")
+    @DynamoDBAttribute(attributeName = "exercise_name")
     public String getExerciseName() {
         return exerciseName;
     }

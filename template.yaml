@@ -281,6 +281,28 @@ Resources:
             Path: /workouts/{date}
             Method: put
 
+  GetExerciseLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Role: !GetAtt AccessRole.Arn
+      CodeUri: FitTrack
+      Handler: com.nashss.se.fittrack.lambda.GetExerciseLambda::handleRequest
+      Runtime: java11
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Environment:
+        Variables:
+          JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+      Events:
+        MusicPlaylistService:
+          Type: Api
+          Properties:
+            Path: /exercises/{type}
+            Method: get
+            Auth:
+              Authorizer: 'NONE'
+
   #-----------------------------------------------------
   # DynamoDB Configuration
   #-----------------------------------------------------
@@ -307,13 +329,9 @@ Resources:
       AttributeDefinitions:
         - AttributeName: "exercise_type"
           AttributeType: "S"
-        - AttributeName: "exercise_name"
-          AttributeType: "S"
       KeySchema:
          - AttributeName: "exercise_type"
            KeyType: "HASH"
-         - AttributeName: "exercise_name"
-           KeyType: "RANGE"
       BillingMode: "PAY_PER_REQUEST"
       TableName: "exercises"
 

@@ -11,13 +11,10 @@ public class GetExerciseLambda
 
     @Override
     public LambdaResponse handleRequest(LambdaRequest<GetExerciseRequest> input, Context context) {
-        return super.runActivity(() -> {
-                GetExerciseRequest request = input.fromPath(path ->
-                        GetExerciseRequest.builder()
-                                .withType(path.get("type"))
-                                .build());
-                return request;
-            },
+        return super.runActivity(() -> input.fromPath(path ->
+                GetExerciseRequest.builder()
+                        .withType(path.get("type"))
+                        .build()),
             (request, serviceComponent) ->
                     serviceComponent.provideGetExerciseActivity().handleRequest(request)
         );
