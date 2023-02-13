@@ -1,23 +1,193 @@
 {
-  "workouts": [
-    {
-      "PutRequest": {
-        "Item": {
-          "email": {"S":  "mcmarotta48@gmail.com"},
-          "name": {"S":  "Leg day"},
-          "date": {"S":  "2023-02-06"},
-          "notes": {"SS":  ["Felt like I could go heavier on squats.", "Too many lunges."]}
-        }
-      }
-    }
-  ],
   "exercises": [
     {
       "PutRequest": {
         "Item": {
           "exercise_type": {"S":  "WeightLifting"},
-          "exercise_name": {"S": "Squats"},
-          "description": {"S": "Barbell squats"}
+          "exercise_name": {"S": "Squats"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S":  "WeightLifting"},
+          "exercise_name": {"S": "Bench Press"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S":  "WeightLifting"},
+          "exercise_name": {"S": "Bicep Curls"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S":  "WeightLifting"},
+          "exercise_name": {"S": "Shoulder Press"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S":  "WeightLifting"},
+          "exercise_name": {"S": "Overhead Press"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "WeightLifting"},
+          "exercise_name": {"S": "DeadLift"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {
+            "S": "WeightLifting"
+          },
+          "exercise_name": {
+            "S": "Triceps Extensions"
+          }
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Cardio"},
+          "exercise_name": {"S": "Run"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Cardio"},
+          "exercise_name": {"S": "Swim"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Cardio"},
+          "exercise_name": {"S": "Bike"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Cardio"},
+          "exercise_name": {"S": "Walk"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Cardio"},
+          "exercise_name": {"S": "Stair Master"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Cardio"},
+          "exercise_name": {"S": "Row Machine"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Cardio"},
+          "exercise_name": {"S": "Treadmill"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Calisthenics"},
+          "exercise_name": {"S": "Push ups"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Calisthenics"},
+          "exercise_name": {"S": "Pull ups"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Calisthenics"},
+          "exercise_name": {"S": "Burpees"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Calisthenics"},
+          "exercise_name": {"S": "Sit ups"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Calisthenics"},
+          "exercise_name": {"S": "Planks"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Calisthenics"},
+          "exercise_name": {"S": "Box Jumps"}
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_type": {"S": "Calisthenics"},
+          "exercise_name": {"S": "Dips"}
         }
       }
     }

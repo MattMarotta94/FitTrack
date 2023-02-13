@@ -1,6 +1,7 @@
 package com.nashss.se.fittrack.dependancy;
 
 import com.nashss.se.fittrack.activity.CreateWorkoutActivity;
+import com.nashss.se.fittrack.activity.GetExerciseActivity;
 import com.nashss.se.fittrack.activity.GetWorkoutActivity;
 import com.nashss.se.fittrack.activity.UpdateWorkoutActivity;
 
@@ -36,4 +37,5 @@ public interface ServiceComponent {
      */
     UpdateWorkoutActivity provideUpdateWorkoutActivity();
 
+    GetExerciseActivity provideGetExerciseActivity();
 }
