@@ -26,7 +26,7 @@ class GetWorkout extends BindingClass {
     constructor() {
         super();
 
-        this.bindClassMethods(['mount', 'search', 'displayWorkout'], this);
+        this.bindClassMethods(['mount', 'search', 'displayWorkout', 'showEdits', 'submitEdits'], this);
 
         this.dataStore = new DataStore(EMPTY_DATASTORE_STATE);
         this.header = new Header(this.dataStore);
@@ -36,10 +36,11 @@ class GetWorkout extends BindingClass {
 
 
     mount() {
-        document.getElementById('search-workouts-form').addEventListener('submit', this.search);
         document.getElementById('search-button').addEventListener('click', this.search);
         document.getElementById('search-button').addEventListener('click', this.displayWorkout);
-
+        document.getElementById('edit-button').addEventListener('click', this.showEdits);
+        document.getElementById('submit-edits').addEventListener('click', this.submitEdits);
+        
         this.header.addHeaderToPage();
 
         this.client = new FitTrackClient();
@@ -72,8 +73,35 @@ class GetWorkout extends BindingClass {
         document.getElementById('workout-name').innerText = workout.name;
         document.getElementById('workout-date').innerText = workout.date;
         document.getElementById('workout-notes').innerText = workout.notes;
+    }
 
-}
+    showEdits() {
+        var editFields = document.getElementById('edit-fields');
+        editFields.classList.remove('hidden');
+    }
+
+    async submitEdits(evt) {
+        evt.preventDefault();
+
+        const errorMessageDisplay = document.getElementById('error-message');
+        errorMessageDisplay.innerText = `error`;
+        errorMessageDisplay.classList.add('hidden')
+
+        const workoutName = document.getElementById('name').value;
+        const workoutDate = document.getElementById('date').value;
+        const workoutNotes = document.getElementById('notes').value;
+        console.log(workoutName);
+        console.log(workoutDate);
+        console.log(workoutNotes); 
+
+        const updatedWorkout = await this.client.updateWorkout(workoutDate, workoutName, workoutNotes, (error) => {
+            createButton.innerText = origButtonText;
+            errorMessageDisplay.innerText = `Error: ${error.message}`;
+            errorMessageDisplay.classList.remove('hidden');
+        });
+
+        this.dataStore.set('updated-workout', updatedWorkout);
+    }
 
 }
 

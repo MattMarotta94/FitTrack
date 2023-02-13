@@ -102,6 +102,23 @@ export default class FitTrackClient extends BindingClass {
             this.handleError(error, errorCallback)
         }
     }
+
+    async updateWorkout(date, name, notes, errorCallback) {
+        try {
+            const token = await this.getTokenOrThrow("Only authenticated users can edit workouts.");
+            const response = await this.axiosClient.put(`workouts/${date}`, {
+                name:name,
+                notes:notes,
+                date:date
+            },
+            { headers: {
+                Authorization: `Bearer ${token}`
+            }});
+            return response.data.workout;
+        } catch (error) {
+            this.handleError(error, errorCallback);
+        }
+    }
   
         /**
      * Helper method to log the error and run any error functions.
