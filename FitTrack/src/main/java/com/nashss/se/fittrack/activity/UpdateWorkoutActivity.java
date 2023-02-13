@@ -30,10 +30,14 @@ public class UpdateWorkoutActivity {
      * @return updateWorkoutResult result object containing the API defined.
      */
     public UpdateWorkoutResult handleRequest(final UpdateWorkoutRequest updateWorkoutRequest) {
+        String requestedDate = updateWorkoutRequest.getDate();
+        String requestedEmail = updateWorkoutRequest.getEmail();
 
-        Workout workout = workoutDao.getWorkout("fakeemail", updateWorkoutRequest.getDate());
+        Workout workout = workoutDao.getWorkout(requestedEmail, requestedDate);
 
         workout.setDate(updateWorkoutRequest.getDate());
+        workout.setNotes(updateWorkoutRequest.getNotes());
+        workout.setName(updateWorkoutRequest.getName());
         workout = workoutDao.saveWorkout(workout);
 
         return UpdateWorkoutResult.builder()
