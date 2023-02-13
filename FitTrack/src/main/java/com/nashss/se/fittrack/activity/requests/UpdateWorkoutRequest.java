@@ -37,7 +37,9 @@ public class UpdateWorkoutRequest {
         return notes;
     }
 
-    public String getEmail() {return email;}
+    public String getEmail() {
+        return email;
+    }
 
     public List<Exercise> getExerciseList() {
         return exerciseList;
