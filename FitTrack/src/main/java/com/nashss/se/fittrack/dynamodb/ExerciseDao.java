@@ -17,7 +17,6 @@ public class ExerciseDao {
     }
 
     public Exercise getExercise(String type, String name) {
-        Exercise exercise = dynamoDBMapper.load(Exercise.class, type, name);
-        return exercise;
+        return dynamoDBMapper.load(Exercise.class, type, name);
     }
 }
