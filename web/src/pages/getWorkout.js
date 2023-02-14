@@ -87,12 +87,13 @@ class GetWorkout extends BindingClass {
         errorMessageDisplay.innerText = `error`;
         errorMessageDisplay.classList.add('hidden')
 
+        const submitButton = document.getElementById('submit-edits');
+        const origButtonText = submitButton.innerText;
+        submitButton.innerText = 'Success!';
+
         const workoutName = document.getElementById('name').value;
         const workoutDate = document.getElementById('date').value;
         const workoutNotes = document.getElementById('notes').value;
-        console.log(workoutName);
-        console.log(workoutDate);
-        console.log(workoutNotes); 
 
         const updatedWorkout = await this.client.updateWorkout(workoutDate, workoutName, workoutNotes, (error) => {
             createButton.innerText = origButtonText;
@@ -100,7 +101,7 @@ class GetWorkout extends BindingClass {
             errorMessageDisplay.classList.remove('hidden');
         });
 
-        this.dataStore.set('updated-workout', updatedWorkout);
+        this.dataStore.set('results', updatedWorkout);
     }
 
 }

@@ -46,4 +46,12 @@ public class WorkoutDao {
         return workout;
     }
 
+    /**
+     * Deletes the given workout.
+     * @param workout the workout to be deleted.
+     */
+    public void deleteWorkout(Workout workout) {
+        this.dynamoDBMapper.delete(workout);
+    }
+
 }
