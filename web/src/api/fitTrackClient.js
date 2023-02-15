@@ -119,6 +119,20 @@ export default class FitTrackClient extends BindingClass {
             this.handleError(error, errorCallback);
         }
     }
+
+    async deleteWorkout(date, errorCallback) {
+        try {
+            const token = await this.getTokenOrThrow("Only authenticated users can delete workouts.");
+            const response = await this.axiosClient.delete(`workouts/${date}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            return response.data.workout;
+        } catch (error) {
+            this.handleError(error, errorCallback);
+        }
+    }
   
         /**
      * Helper method to log the error and run any error functions.

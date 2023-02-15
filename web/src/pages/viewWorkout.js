@@ -7,7 +7,7 @@ import DataStore from "../util/DataStore";
 class ViewWorkout extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount', 'addWorkoutToPage', 'showEdits', 'submitEdits'], this);
+        this.bindClassMethods(['clientLoaded', 'mount', 'addWorkoutToPage', 'showEdits', 'submitEdits', 'showDelete', 'submitDelete'], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.addWorkoutToPage);
         this.header = new Header(this.dataStore);
@@ -26,6 +26,7 @@ class ViewWorkout extends BindingClass {
         this.header.addHeaderToPage();
         document.getElementById('edit-button').addEventListener('click', this.showEdits);
         document.getElementById('submit-edits').addEventListener('click', this.submitEdits);
+        document.getElementById('delete-button').addEventListener('click', this.submitDelete);
 
         this.client = new FitTrackClient();
         this.clientLoaded();
@@ -70,6 +71,33 @@ class ViewWorkout extends BindingClass {
 
         this.dataStore.set('workout', updatedWorkout);
     }
+
+    showDelete() {
+        var deleteButton = document.getElementById('delete-button');
+        deleteButton.classList.remove('hidden');
+    }
+
+    async submitDelete(evt) {
+        evt.preventDefault();
+
+       const workout = this.dataStore.get('workout')
+
+        const deleteButton = document.getElementById('delete-button');
+        const origButtonText = deleteButton.innerText;
+        deleteButton.innerText = 'Deleted';
+
+        const workoutDate = workout.date;
+
+        const deletedWorkout =  await this.client.deleteWorkout(workoutDate, (error) => {
+            createButton.innerText = origButtonText;
+            errorMessageDisplay.innerText = `Error: ${error.message}`;
+            errorMessageDisplay.classList.remove('hidden');
+        });
+
+    this.dataStore.set('workout', deletedWorkout);
+    
+    }
+
 }
 
 const main = async () => {
