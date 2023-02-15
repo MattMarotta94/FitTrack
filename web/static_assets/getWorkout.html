@@ -8,19 +8,19 @@
 
 <body class="background">
     <header class="header" id="header"></header>
-    <div class="card">
+    <div class="search-card">
         <h2>Search Workouts</h2>
         <form class="card-content" id="search-workouts-form">
             <p class="form-field">
-                <input type="text" class="validated-field" id="search-criteria" placeholder="Ex: 2023-01-31" autofocus>
-                <sub>Search is case-sensitvive and date must match exactly.</sub>
+                <input type="text" class="input" id="search-criteria" placeholder="Ex: 2023-01-31" autofocus>
             </p>
         </form>
         <p class="button-group">
             <a href="#" class="button" id="search-button">Search</a>
         </p>
     </div>
-    <div class="card">
+    
+    <div class="search-card">
         <h2>Workout</h2> 
         <p class="button-group">
             <a href="#" class="button" id="edit-button">Edit</a></p>
@@ -29,29 +29,33 @@
         <h3 id="workout-notes"></h3>
     </div>
 
-    <div class="card hidden" id="edit-fields"> 
+    <div class="search-card hidden" id="edit-fields"> 
         <p class="hidden error" id="error-message"></p>
-        <form class="card-content" id="workout-name-form">
-        <p class="hidden error" id="error-message"></p>
+        
+    <form class="card-content" id="workout-name-form">
         <p class="form-field">
             <label>Workout Name</label>
-            <input type="text" class="validated-field" id="name" placeholder="Example: Leg Day" autofocus>
+            <input type="text" class="input" id="name">
         </p>
     </form>
+    
     <form class="card-content" id="date-form">
         <p class="form-field">
             <label>Date</label>
-            <input type="text" class="validated-field" id="date" placeholder="Year-Month-Day" autofocus>
+            <input type="text" class="input" id="date">
         </p>
     </form>
+    
     <form class="card-content" id="notes-form">
         <p class="form-field">
             <label>Notes</label>
-            <input type="text" class="validated-field" id="notes" placeholder="Document your progress!" autofocus>
+            <input type="text" class="input" id="notes">
         </p>
     </form>
+    
     <p class="button-group">
         <a href="#" class="button" id="submit-edits">Submit Changes</a>
+    
     </p>
 </div>
 

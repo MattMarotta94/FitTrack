@@ -1,16 +1,13 @@
 package com.nashss.se.fittrack.dependancy;
 
-import com.nashss.se.fittrack.activity.CreateWorkoutActivity;
-import com.nashss.se.fittrack.activity.GetExerciseActivity;
-import com.nashss.se.fittrack.activity.GetWorkoutActivity;
-import com.nashss.se.fittrack.activity.UpdateWorkoutActivity;
+import com.nashss.se.fittrack.activity.*;
 
 import dagger.Component;
 
 import javax.inject.Singleton;
 
 /**
- * Dagger component for providing dependency injection in the Music Playlist Service.
+ * Dagger component for providing dependency injection in the FitTrack service.
  */
 @Singleton
 @Component(modules = {DaoModule.class, MetricsModule.class})
@@ -43,4 +40,10 @@ public interface ServiceComponent {
      * @return GetExerciseActivity
      */
     GetExerciseActivity provideGetExerciseActivity();
+
+    /**
+     * Provides the relevant activity.
+     * @return DeleteWorkoutActivity
+     */
+    DeleteWorkoutActivity provideDeleteWorkoutActivity();
 }

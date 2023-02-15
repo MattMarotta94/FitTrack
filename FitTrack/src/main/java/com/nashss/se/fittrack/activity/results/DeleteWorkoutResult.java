@@ -1,13 +1,11 @@
 package com.nashss.se.fittrack.activity.results;
+
 import com.nashss.se.fittrack.models.WorkoutModel;
 
-/**
- * Implementation of the GetWorkoutResult.
- */
-public class GetWorkoutResult {
+public class DeleteWorkoutResult {
     private final WorkoutModel workout;
 
-    private GetWorkoutResult(WorkoutModel workout) {
+    public DeleteWorkoutResult(WorkoutModel workout) {
         this.workout = workout;
     }
 
@@ -17,7 +15,7 @@ public class GetWorkoutResult {
 
     @Override
     public String toString() {
-        return "GetWorkoutResult{" +
+        return "DeleteWorkoutResult{" +
                 "workout=" + workout +
                 '}';
     }
@@ -33,8 +31,8 @@ public class GetWorkoutResult {
             this.workout = workout;
             return this;
         }
-        public GetWorkoutResult build() {
-            return new GetWorkoutResult(workout);
+        public DeleteWorkoutResult build() {
+            return new DeleteWorkoutResult(workout);
         }
     }
 }

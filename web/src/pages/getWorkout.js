@@ -82,7 +82,7 @@ class GetWorkout extends BindingClass {
 
     async submitEdits(evt) {
         evt.preventDefault();
-
+     
         const errorMessageDisplay = document.getElementById('error-message');
         errorMessageDisplay.innerText = `error`;
         errorMessageDisplay.classList.add('hidden')
@@ -101,7 +101,10 @@ class GetWorkout extends BindingClass {
             errorMessageDisplay.classList.remove('hidden');
         });
 
+        
+
         this.dataStore.set('results', updatedWorkout);
+       
     }
 
 }

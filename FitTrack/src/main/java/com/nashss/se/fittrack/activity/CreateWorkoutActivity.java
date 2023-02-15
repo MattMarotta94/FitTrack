@@ -41,6 +41,7 @@ public class CreateWorkoutActivity {
     public CreateWorkoutResult handleRequest(final CreateWorkoutRequest createWorkoutRequest) {
         log.info("Received CreateWorkoutRequest {}", createWorkoutRequest);
 
+
         Workout newWorkout = new Workout();
         newWorkout.setEmail(createWorkoutRequest.getEmail());
         newWorkout.setName(createWorkoutRequest.getName());
