@@ -1,38 +1,38 @@
 package com.nashss.se.fittrack.activity.results;
 
-import com.nashss.se.fittrack.models.WorkoutModel;
-
 public class DeleteWorkoutResult {
-    private final WorkoutModel workout;
+  private final String deleted;
 
-    public DeleteWorkoutResult(WorkoutModel workout) {
-        this.workout = workout;
+    public DeleteWorkoutResult(String deleted) {
+        this.deleted = deleted;
+
     }
-
-    public WorkoutModel getWorkout() {
-        return workout;
+    public String getDeleted() {
+        return this.deleted;
     }
 
     @Override
     public String toString() {
         return "DeleteWorkoutResult{" +
-                "workout=" + workout +
+                "deleted='" + deleted + '\'' +
                 '}';
     }
+
     //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }
 
     public static class Builder {
-        private WorkoutModel workout;
+        private String deleted;
 
-        public Builder withWorkout(WorkoutModel workout) {
-            this.workout = workout;
+        public Builder withString(String deleted) {
+            this.deleted = deleted;
             return this;
         }
+
         public DeleteWorkoutResult build() {
-            return new DeleteWorkoutResult(workout);
+            return new DeleteWorkoutResult(deleted);
         }
     }
 }

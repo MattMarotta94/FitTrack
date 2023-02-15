@@ -2,7 +2,6 @@ package com.nashss.se.fittrack.activity.requests;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-import com.nashss.se.fittrack.dynamodb.models.Workout;
 
 @JsonDeserialize
 public class DeleteWorkoutRequest {
@@ -12,14 +11,6 @@ public class DeleteWorkoutRequest {
     private DeleteWorkoutRequest(String date, String email) {
         this.date = date;
         this.email = email;
-    }
-
-    public Workout getWorkout(String email, String Date) {
-        Workout workout = new Workout();
-        workout.setDate(date);
-        workout.setEmail(email);
-
-        return workout;
     }
 
     public String getDate() {

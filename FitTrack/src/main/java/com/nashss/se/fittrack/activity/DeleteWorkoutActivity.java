@@ -6,11 +6,15 @@ import com.nashss.se.fittrack.converters.ModelConverter;
 import com.nashss.se.fittrack.dynamodb.WorkoutDao;
 import com.nashss.se.fittrack.dynamodb.models.Workout;
 import com.nashss.se.fittrack.models.WorkoutModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 
 public class DeleteWorkoutActivity {
     private final WorkoutDao workoutDao;
+
+    private final Logger log = LogManager.getLogger();
 
     /**
      * Instantiates a new DeleteWorkoutActivity object.
@@ -28,15 +32,18 @@ public class DeleteWorkoutActivity {
      * @return deleteWorkoutResult object containing the API defined.
      */
     public DeleteWorkoutResult handleRequest(final DeleteWorkoutRequest deleteWorkoutRequest) {
+        log.info("email", deleteWorkoutRequest.getEmail());
+        log.info("date", deleteWorkoutRequest.getDate());
         String requestedDate = deleteWorkoutRequest.getDate();
         String requestedEmail = deleteWorkoutRequest.getEmail();
-        Workout workout = deleteWorkoutRequest.getWorkout(requestedDate, requestedEmail);
-        WorkoutModel workoutModel = new ModelConverter().toWorkoutModel(workout);
+        log.info("handle request 1st", deleteWorkoutRequest);
 
-        workoutDao.deleteWorkout(workout);
+        workoutDao.deleteWorkout(requestedDate, requestedEmail);
+
+        log.info("handle request 2nd", deleteWorkoutRequest);
 
         return DeleteWorkoutResult.builder()
-                .withWorkout(workoutModel)
-                .build();
+                .withString("Deleted Successfully")
+                .build() ;
     }
 }

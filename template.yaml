@@ -320,7 +320,7 @@ Resources:
         MusicPlaylistService:
           Type: Api
           Properties:
-            Path: /workouts/{date}
+            Path: /workouts/{date}/
             Method: delete
             Auth:
               Authorizer: 'NONE'
