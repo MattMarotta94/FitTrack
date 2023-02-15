@@ -9,14 +9,26 @@ import com.nashss.se.fittrack.models.ExerciseModel;
 
 import javax.inject.Inject;
 
+/**
+ * GetExerciseActivity.
+ */
 public class GetExerciseActivity {
     private final ExerciseDao exerciseDao;
 
+    /**
+     * Instantiates a GetExerciseActivity object.
+     * @param exerciseDao the exerciseDao.
+     */
     @Inject
     public GetExerciseActivity(ExerciseDao exerciseDao) {
         this.exerciseDao = exerciseDao;
     }
-
+    /**
+     * This method handles the incoming request by retrieving the exercise from the database.
+     * It then returns the exercise.
+     * @param getExerciseRequest request object containing the workout date.
+     * @return getExerciseResult object containing the API defined.
+     */
     public GetExerciseResult handleRequest(final GetExerciseRequest getExerciseRequest) {
         String requestedType = getExerciseRequest.getType();
         String requestedName = getExerciseRequest.getName();
