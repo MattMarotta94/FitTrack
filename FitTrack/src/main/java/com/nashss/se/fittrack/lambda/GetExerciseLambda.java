@@ -5,6 +5,9 @@ import com.nashss.se.fittrack.activity.results.GetExerciseResult;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
+/**
+ * API call to the exercises table.
+ */
 public class GetExerciseLambda
         extends LambdaActivityRunner<GetExerciseRequest, GetExerciseResult>
         implements RequestHandler<LambdaRequest<GetExerciseRequest>, LambdaResponse> {

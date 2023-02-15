@@ -2,6 +2,9 @@ package com.nashss.se.fittrack.activity.results;
 
 import com.nashss.se.fittrack.models.ExerciseModel;
 
+/**
+ * GetExerciseResult.
+ */
 public class GetExerciseResult {
 
     private final ExerciseModel exercise;

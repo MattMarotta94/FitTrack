@@ -1,5 +1,8 @@
 package com.nashss.se.fittrack.activity.requests;
 
+/**
+ * GetExerciseRequest.
+ */
 public class GetExerciseRequest {
 
     private final String type;

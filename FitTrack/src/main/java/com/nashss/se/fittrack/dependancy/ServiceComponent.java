@@ -37,5 +37,10 @@ public interface ServiceComponent {
      */
     UpdateWorkoutActivity provideUpdateWorkoutActivity();
 
+    /**
+     * Provides the relevant activity.
+     *
+     * @return GetExerciseActivity
+     */
     GetExerciseActivity provideGetExerciseActivity();
 }
