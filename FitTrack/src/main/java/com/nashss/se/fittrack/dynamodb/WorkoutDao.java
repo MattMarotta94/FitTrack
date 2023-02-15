@@ -2,6 +2,8 @@ package com.nashss.se.fittrack.dynamodb;
 import com.nashss.se.fittrack.dynamodb.models.Workout;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -12,6 +14,7 @@ import javax.inject.Singleton;
 @Singleton
 public class WorkoutDao {
     private final DynamoDBMapper dynamoDBMapper;
+    private final Logger log = LogManager.getLogger();
 
     /**
      * Instantiates a WorkoutDao object.
@@ -48,10 +51,17 @@ public class WorkoutDao {
 
     /**
      * Deletes the given workout.
-     * @param workout the workout to be deleted.
+     * @param email the email.
+     * @param date the date.
      */
-    public void deleteWorkout(Workout workout) {
+    public void deleteWorkout(String date, String email) {
+        log.info("email", email);
+        log.info("date", date);
+        Workout workout = new Workout();
+        workout.setEmail(email);
+        workout.setDate(date);
         this.dynamoDBMapper.delete(workout);
+        log.info("made it past delete");
     }
 
 }

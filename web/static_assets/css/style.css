@@ -1,6 +1,6 @@
 :root {
     /* css variables: https://developer.mozilla.org/en-US/docs/Web/CSS/var */
-    --primary-color: #5D5E5E;
+    --primary-color: #000000;
     --secondary-color: #ffffff;
     --tertiary-color: #F5881F;
     --error-color: #EE3A23;
@@ -10,7 +10,7 @@
     background-color: #8A8C8F;
     margin: 0;
     counter-reset: section;
-    font-family: "Helvetica Neue",Helvetica,sans-serif;
+    font-family: monospace;
 }
 
 .header {
@@ -23,7 +23,7 @@
     padding: 4px 20px;
 }
 
-.button {
+/* .button {
   background-color: var(--tertiary-color);
   border: none;
   color: var(--secondary-color);
@@ -32,7 +32,7 @@
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
-}
+} */
 
 .button-group {
     display: flex;
@@ -41,7 +41,7 @@
 
 .header_home {
     font-size: 36px;
-    line-height: 40px;
+    line-height: 60px;
     height: 100px;
     text-decoration: none;
     color: var(--secondary-color);
@@ -50,7 +50,7 @@
 .card {
     color: var(--primary-color);
     background-color: var(--secondary-color);
-    margin: 20px;
+    margin: 200px;
     padding: 10px 20px;
 }
 
@@ -76,45 +76,11 @@
     flex-direction: column;
 }
 
-.tags {
-    display: flex;
-    flex-direction: row;
-}
-
-.tag {
-    font-size: 12px;
-    margin: 0 10px;
-    padding: 4px 8px;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    position: relative;
-    border-radius: 16px;
-}
-
-.song {
-    padding: 2px;
-    display: flex;
-}
-
-.song .title {
-    flex: 20%;
-}
-
-.song .album {
-    flex: 80%;
-}
-
 /*
 Flexbox on a lists removes the numbers. We use a counter here to add them back.
 https://stackoverflow.com/a/34316093
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters
 */
-.song:before {
-    counter-increment: section;
-    content: counter(section) ".";
-    position: absolute;
-    margin-left: -40px;
-}
 
 .hidden {
     display: none;
@@ -136,9 +102,94 @@ a {
     text-decoration: none;
 }
 
-.class2 {
-    color: var(--primary-color);
-    background-color: var(--secondary-color);
-    margin: 20px;
-    padding: 10px 20px;
+.fancy-card {
+    width: 190px;
+    height: 254px;
+    background: linear-gradient(145deg, #2B86C5 0%, #FF3CAC 100%);
+    border-radius: 5px;
+    box-shadow: 10px 10px 9px #c5c5c5,
+        -10px -10px 9px #ffffff;
+    transition: box-shadow 0.7s ease;
+}
+
+.card:hover {
+    box-shadow: 10px 10px 15px #c5c5c5,
+            -10px -10px 15px #ffffff;
+}
+
+.new-card {
+    width: 800px;
+    height: auto;
+    background: linear-gradient(135deg, #ff85ec 0%, #84ff98 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding-left: 100px;
+    padding-right: 100px;
+    margin: 50px;
+}
+
+.input {
+    max-width: 500px;
+    height: 50px;
+    border: 2px solid transparent;
+    outline: none;
+    border-bottom: 2px solid #3f3f3f;
+    caret-color: #3f3f3f;
+    background-color: #212121;
+    padding: 5px;
+    transition: .5s linear;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+.input:focus {
+    border: 2px solid #ffffff;
+    caret-color: #ffffff;
+    color: #ffffff;
+    box-shadow: 4px 4px 10px #070707;
+}
+
+.input:focus::placeholder {
+    color: #ffffff;
+}
+
+
+.button {
+    background-color: #333;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: 17px;
+  }
+  
+  .button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    background-color: rgb(128, 95, 247);
+  }
+  
+  .button:active {
+    transform: translateY(0.5em);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+
+.search-card {
+    width: 800px;
+    height: auto;
+    background: linear-gradient(135deg, #ff85ec 0%, #84ff98 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding-left: 100px;
+    padding-right: 100px;
+    margin: 50px;
 }

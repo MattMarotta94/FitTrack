@@ -12,7 +12,8 @@ public class GetWorkoutResult {
     }
 
     public WorkoutModel getWorkout() {
-        return workout; }
+        return workout;
+    }
 
     @Override
     public String toString() {
