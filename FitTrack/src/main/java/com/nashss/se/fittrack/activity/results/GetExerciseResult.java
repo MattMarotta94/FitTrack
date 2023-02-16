@@ -2,25 +2,28 @@ package com.nashss.se.fittrack.activity.results;
 
 import com.nashss.se.fittrack.models.ExerciseModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * GetExerciseResult.
  */
 public class GetExerciseResult {
 
-    private final ExerciseModel exercise;
+    private final List<ExerciseModel> exerciseList;
 
-    private GetExerciseResult(ExerciseModel exerciseModel) {
-        this.exercise = exerciseModel;
+    private GetExerciseResult(List<ExerciseModel> exerciseList) {
+        this.exerciseList = exerciseList;
     }
 
-    public ExerciseModel getExercise() {
-        return exercise;
+    public List<ExerciseModel> getExerciseList() {
+        return exerciseList;
     }
 
     @Override
     public String toString() {
         return "GetExerciseResult{" +
-                "exerciseModel=" + exercise +
+                "exerciseList=" + exerciseList +
                 '}';
     }
 
@@ -30,15 +33,15 @@ public class GetExerciseResult {
     }
 
     public static class Builder {
-        private ExerciseModel exercise;
+        private List<ExerciseModel> exerciseList;
 
-        public Builder withExercise(ExerciseModel exercise) {
-            this.exercise = exercise;
+        public Builder withExercise(List<ExerciseModel> exerciseList) {
+            this.exerciseList = new ArrayList<>(exerciseList);
             return this;
         }
 
         public GetExerciseResult build() {
-            return new GetExerciseResult(exercise);
+            return new GetExerciseResult(exerciseList);
         }
     }
 }

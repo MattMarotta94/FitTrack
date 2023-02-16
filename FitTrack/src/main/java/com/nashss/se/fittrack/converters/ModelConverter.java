@@ -5,6 +5,9 @@ import com.nashss.se.fittrack.dynamodb.models.Workout;
 import com.nashss.se.fittrack.models.ExerciseModel;
 import com.nashss.se.fittrack.models.WorkoutModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Converts between Data and API models.
  */
@@ -27,14 +30,27 @@ public class ModelConverter {
 
     /**
      * Converts a provided Exercise into an ExerciseModel representation.
-     * @param exercise the Exercise to convert to ExerciseModel.
-     * @return the converted ExerciseModel with fields mapped from exercise.
+     * @param exercise the exercise to be converted.
+     * @return the converted exercise.
      */
     public ExerciseModel toExerciseModel(Exercise exercise) {
         return ExerciseModel.builder()
-                .withName(exercise.getExerciseName())
                 .withType(exercise.getExerciseType())
+                .withName(exercise.getExerciseName())
                 .withDescription(exercise.getDescription())
                 .build();
+    }
+
+    /**
+     * Converts a provided list of Exercises into a list of ExerciseModels.
+     * @param exercises the list of Exercises to convert to list of ExerciseModels.
+     * @return the converted ExerciseModel list.
+     */
+    public List<ExerciseModel> toExerciseModel(List<Exercise> exercises) {
+        List<ExerciseModel> exerciseModelList = new ArrayList<>();
+        for (Exercise exercise : exercises) {
+            exerciseModelList.add(toExerciseModel(exercise));
+        }
+        return exerciseModelList;
     }
 }

@@ -1,8 +1,13 @@
 package com.nashss.se.fittrack.activity.requests;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 /**
  * GetExerciseRequest.
  */
+
+@JsonDeserialize
 public class GetExerciseRequest {
 
     private final String type;
@@ -34,6 +39,7 @@ public class GetExerciseRequest {
         return new Builder();
     }
 
+    @JsonPOJOBuilder
     public static class Builder {
         private String type;
         private String name;

@@ -7,7 +7,7 @@ import DataStore from "../util/DataStore";
 class ViewWorkout extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount', 'addWorkoutToPage', 'showEdits', 'submitEdits'], this);
+        this.bindClassMethods(['clientLoaded', 'mount', 'addWorkoutToPage', 'showEdits', 'submitEdits', 'showDelete', 'submitDelete'], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.addWorkoutToPage);
         this.header = new Header(this.dataStore);
@@ -25,7 +25,8 @@ class ViewWorkout extends BindingClass {
     mount() {
         this.header.addHeaderToPage();
         document.getElementById('edit-button').addEventListener('click', this.showEdits);
-        document.getElementById('submit-edits').addEventListener('click', this.submitEdits);
+        document.getElementById('create').addEventListener('click', this.submitEdits);
+        document.getElementById('delete-button').addEventListener('click', this.submitDelete);
 
         this.client = new FitTrackClient();
         this.clientLoaded();
@@ -54,7 +55,7 @@ class ViewWorkout extends BindingClass {
         errorMessageDisplay.innerText = `error`;
         errorMessageDisplay.classList.add('hidden')
 
-        const submitButton = document.getElementById('submit-edits');
+        const submitButton = document.getElementById('create');
         const origButtonText = submitButton.innerText;
         submitButton.innerText = 'Success!';
 
@@ -63,13 +64,39 @@ class ViewWorkout extends BindingClass {
         const workoutNotes = document.getElementById('notes').value;
 
         const updatedWorkout = await this.client.updateWorkout(workoutDate, workoutName, workoutNotes, (error) => {
-            createButton.innerText = origButtonText;
+            submitButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
         });
 
         this.dataStore.set('workout', updatedWorkout);
     }
+
+    showDelete() {
+        var deleteButton = document.getElementById('delete-button');
+        deleteButton.classList.remove('hidden');
+    }
+
+    async submitDelete(evt) {
+        evt.preventDefault();
+
+       const workout = this.dataStore.get('workout')
+
+        const deleteButton = document.getElementById('delete-button');
+        const origButtonText = deleteButton.innerText;
+        deleteButton.innerText = 'Deleted';
+
+        const workoutDate = workout.date;
+
+        const deletedWorkout =  await this.client.deleteWorkout(workoutDate, (error) => {
+            errorMessageDisplay.innerText = `Error: ${error.message}`;
+            errorMessageDisplay.classList.remove('hidden');
+        });
+
+    this.dataStore.set('workout', deletedWorkout);
+    
+    }
+
 }
 
 const main = async () => {
