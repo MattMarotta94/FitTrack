@@ -11,6 +11,7 @@
     <div class="new-card">
         <h4 id="workout-date"></h4>
         <h2 id="workout-name"></h2>
+        <h2 id="workout-exercises"></h2>
         <h2 id="workout-notes"></h2>
         <p class="button-group">
             <a href="#" class="button" id="edit-button">Edit</a>
@@ -30,9 +31,17 @@
 
     <form class="card-content" id="workout-name-form">
     <p class="form-field">
+
         <label>Workout Name</label>
         <input type="text" class="input" id="name">
     </p>
+    </form>
+
+    <form class="card-content" id="exercise-form">
+        <p class="form-field">
+            <label>Exercise</label>
+            <input type="text" class="input" id="exercises">
+        </p>
     </form>
 
     <form class="card-content" id="notes-form">

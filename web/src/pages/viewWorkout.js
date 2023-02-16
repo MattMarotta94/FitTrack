@@ -40,6 +40,7 @@ class ViewWorkout extends BindingClass {
 
         document.getElementById('workout-name').innerText = workout.name;
         document.getElementById('workout-date').innerText = workout.date;
+        document.getElementById('workout-exercises').innerText = workout.exercises;
         document.getElementById('workout-notes').innerText = workout.notes;
     }
 
@@ -61,9 +62,10 @@ class ViewWorkout extends BindingClass {
 
         const workoutName = document.getElementById('name').value;
         const workoutDate = document.getElementById('date').value;
+        const workoutExercises = document.getElementById('exercises').value;
         const workoutNotes = document.getElementById('notes').value;
 
-        const updatedWorkout = await this.client.updateWorkout(workoutDate, workoutName, workoutNotes, (error) => {
+        const updatedWorkout = await this.client.updateWorkout(workoutDate, workoutName, workoutNotes, workoutExercises, (error) => {
             submitButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');

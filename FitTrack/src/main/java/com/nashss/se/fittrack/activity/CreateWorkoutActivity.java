@@ -46,7 +46,7 @@ public class CreateWorkoutActivity {
         newWorkout.setEmail(createWorkoutRequest.getEmail());
         newWorkout.setName(createWorkoutRequest.getName());
         newWorkout.setNotes(createWorkoutRequest.getNotes());
-        newWorkout.setExerciseList(new ArrayList<>());
+        newWorkout.setExercises(createWorkoutRequest.getExercises());
         newWorkout.setDate(createWorkoutRequest.getDate());
 
         workoutDao.saveWorkout(newWorkout);

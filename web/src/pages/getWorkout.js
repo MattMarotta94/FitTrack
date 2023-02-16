@@ -26,7 +26,7 @@ class GetWorkout extends BindingClass {
     constructor() {
         super();
 
-        this.bindClassMethods(['mount', 'search', 'displayWorkout', 'showEdits', 'submitEdits'], this);
+        this.bindClassMethods(['mount', 'search', 'displayWorkout', 'showEdits', 'submitEdits', 'submitDelete'], this);
 
         this.dataStore = new DataStore(EMPTY_DATASTORE_STATE);
         this.header = new Header(this.dataStore);
@@ -40,6 +40,7 @@ class GetWorkout extends BindingClass {
         document.getElementById('search-button').addEventListener('click', this.displayWorkout);
         document.getElementById('edit-button').addEventListener('click', this.showEdits);
         document.getElementById('submit-edits').addEventListener('click', this.submitEdits);
+        document.getElementById('delete-button').addEventListener('click', this.submitDelete);
         
         this.header.addHeaderToPage();
 
@@ -62,7 +63,11 @@ class GetWorkout extends BindingClass {
             const results = await this.client.getWorkout(searchCriteria);
 
             this.dataStore.set('results', results)
-            };
+            }
+    
+        document.getElementById("edits-card").classList.remove("hidden");
+
+            
         } 
 
     displayWorkout() {
@@ -105,6 +110,24 @@ class GetWorkout extends BindingClass {
 
         this.dataStore.set('results', updatedWorkout);
        
+    }
+
+    async submitDelete() {
+        
+       const workout = this.dataStore.get('results')
+
+       const deleteButton = document.getElementById('delete-button');
+       const origButtonText = deleteButton.innerText;
+       deleteButton.innerText = 'Deleted';
+
+       const workoutDate = workout.date;
+
+       const deletedWorkout =  await this.client.deleteWorkout(workoutDate, (error) => {
+           errorMessageDisplay.innerText = `Error: ${error.message}`;
+           errorMessageDisplay.classList.remove('hidden');
+       });
+
+    this.dataStore.set('results', deletedWorkout);
     }
 
 }
