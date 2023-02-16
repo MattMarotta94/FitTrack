@@ -1,13 +1,14 @@
 package com.nashss.se.fittrack.dynamodb;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.nashss.se.fittrack.dynamodb.models.Exercise;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
+
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.List;
+
 
 /**
  * ExerciseDao.
@@ -28,6 +29,7 @@ public class ExerciseDao {
 
     /**
      * Loads the exercise from the exercise table.
+     * @param type the type of exercise.
      * @return the specified exercises.
      */
     public List<Exercise> getExercises(String type) {

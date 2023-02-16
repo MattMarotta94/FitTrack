@@ -1,5 +1,4 @@
 package com.nashss.se.fittrack.activity;
-
 import com.nashss.se.fittrack.activity.requests.CreateWorkoutRequest;
 import com.nashss.se.fittrack.activity.results.CreateWorkoutResult;
 import com.nashss.se.fittrack.converters.ModelConverter;
@@ -9,8 +8,6 @@ import com.nashss.se.fittrack.models.WorkoutModel;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.ArrayList;
 
 import javax.inject.Inject;
 /**

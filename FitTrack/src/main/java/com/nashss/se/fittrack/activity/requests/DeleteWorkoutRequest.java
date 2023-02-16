@@ -3,6 +3,10 @@ package com.nashss.se.fittrack.activity.requests;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+/**
+ * Implementation of the DeleteWorkoutRequest.
+ * Accepts a date parameter.
+ */
 @JsonDeserialize
 public class DeleteWorkoutRequest {
     private final String date;
