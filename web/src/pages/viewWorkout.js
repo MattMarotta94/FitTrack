@@ -25,7 +25,7 @@ class ViewWorkout extends BindingClass {
     mount() {
         this.header.addHeaderToPage();
         document.getElementById('edit-button').addEventListener('click', this.showEdits);
-        document.getElementById('submit-edits').addEventListener('click', this.submitEdits);
+        document.getElementById('create').addEventListener('click', this.submitEdits);
         document.getElementById('delete-button').addEventListener('click', this.submitDelete);
 
         this.client = new FitTrackClient();
@@ -55,7 +55,7 @@ class ViewWorkout extends BindingClass {
         errorMessageDisplay.innerText = `error`;
         errorMessageDisplay.classList.add('hidden')
 
-        const submitButton = document.getElementById('submit-edits');
+        const submitButton = document.getElementById('create');
         const origButtonText = submitButton.innerText;
         submitButton.innerText = 'Success!';
 
@@ -64,7 +64,7 @@ class ViewWorkout extends BindingClass {
         const workoutNotes = document.getElementById('notes').value;
 
         const updatedWorkout = await this.client.updateWorkout(workoutDate, workoutName, workoutNotes, (error) => {
-            createButton.innerText = origButtonText;
+            submitButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
         });
@@ -89,7 +89,6 @@ class ViewWorkout extends BindingClass {
         const workoutDate = workout.date;
 
         const deletedWorkout =  await this.client.deleteWorkout(workoutDate, (error) => {
-            createButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
         });

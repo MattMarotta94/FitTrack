@@ -298,7 +298,7 @@ Resources:
         MusicPlaylistService:
           Type: Api
           Properties:
-            Path: /exercises/{type}
+            Path: /exercises/{type}/
             Method: get
             Auth:
               Authorizer: 'NONE'

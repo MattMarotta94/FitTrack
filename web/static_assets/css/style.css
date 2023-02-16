@@ -7,7 +7,7 @@
 }
 
 .background {
-    background-color: #8A8C8F;
+    background-color: #000000;
     margin: 0;
     counter-reset: section;
     font-family: monospace;
@@ -128,7 +128,11 @@ a {
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding-left: 100px;
     padding-right: 100px;
-    margin: 50px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    
 }
 
 .input {
@@ -137,12 +141,13 @@ a {
     border: 2px solid transparent;
     outline: none;
     border-bottom: 2px solid #3f3f3f;
-    caret-color: #3f3f3f;
+    caret-color: #ffffff;
     background-color: #212121;
     padding: 5px;
     transition: .5s linear;
     font-family: monospace;
     letter-spacing: 1px;
+    color: white;
 }
 
 .input:focus {
@@ -208,3 +213,18 @@ a {
     padding: 10px;
     background-color: white;
 }
+
+
+.sidenav {
+    height: 100%;
+    width: 100px;
+    position: fixed;
+    z-index: auto;
+    top: auto;
+    left: 0;
+    background: linear-gradient(135deg, #ff85ec 0%, #84ff98 100%);
+    overflow-x: hidden;
+    padding-top: 50px;
+    padding-left: 10px;
+    padding-right: 30px;
+  }
