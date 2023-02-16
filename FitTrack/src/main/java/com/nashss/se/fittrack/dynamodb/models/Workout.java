@@ -16,8 +16,9 @@ public class Workout {
 
     private String name;
     private String date;
+    private String exercises;
     private String notes;
-    private List<Exercise> exerciseList;
+
     private String email;
 
     @DynamoDBRangeKey(attributeName = "date")
@@ -38,6 +39,13 @@ public class Workout {
         this.name = name;
     }
 
+    @DynamoDBAttribute(attributeName = "exercises")
+    public String getExercises() {
+        return exercises;
+    }
+    public void setExercises(String exercises) {
+        this.exercises = exercises;
+    }
 
     @DynamoDBAttribute(attributeName = "notes")
     public String getNotes() {
@@ -46,22 +54,6 @@ public class Workout {
 
     public void setNotes(String notes) {
         this.notes = notes;
-    }
-
-    /**
-     * Returns the list of exercises associated with this Workout, null if there are none.
-     * @return list of exercises for this workout.
-     */
-    @DynamoDBAttribute(attributeName = "exercises")
-    public List<Exercise> getExerciseList() {
-        if (null == exerciseList) {
-            return null;
-        }
-        return exerciseList;
-    }
-
-    public void setExerciseList(List<Exercise> exerciseList) {
-        this.exerciseList = exerciseList;
     }
 
     @DynamoDBHashKey(attributeName = "email")
@@ -75,29 +67,25 @@ public class Workout {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Workout workout = (Workout) o;
-        return Objects.equals(name, workout.name) && Objects.equals(date, workout.date) &&
-                Objects.equals(notes, workout.notes) && Objects.equals(exerciseList, workout.exerciseList);
+        return Objects.equals(name, workout.name) && Objects.equals(date, workout.date) && Objects.equals(exercises, workout.exercises) && Objects.equals(notes, workout.notes) && Objects.equals(email, workout.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, date, notes, exerciseList);
+        return Objects.hash(name, date, exercises, notes, email);
     }
 
     @Override
     public String toString() {
         return "Workout{" +
                 "name='" + name + '\'' +
-                ", date=" + date +
+                ", date='" + date + '\'' +
+                ", exercises='" + exercises + '\'' +
                 ", notes='" + notes + '\'' +
-                ", exerciseList=" + exerciseList +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

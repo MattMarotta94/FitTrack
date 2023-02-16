@@ -8,8 +8,10 @@ import java.util.Objects;
 public class WorkoutModel {
     private String name;
     private String date;
-    private String email;
+    private String exercises;
     private String notes;
+    private String email;
+
 
     /**
      * Instantiates a WorkoutModel object.
@@ -18,11 +20,13 @@ public class WorkoutModel {
      * @param notes the notes for each exercise added into the workout.
      * @param email the email for the users profile determined using Cognito.
      */
-    public WorkoutModel(String name, String date, String notes, String email) {
+    public WorkoutModel(String name, String date, String exercises, String notes, String email) {
         this.name = name;
         this.date = date;
+        this.exercises = exercises;
         this.notes = notes;
         this.email = email;
+
     }
 
     public String getName() {
@@ -39,6 +43,10 @@ public class WorkoutModel {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getExercises() {
+        return exercises;
     }
 
     @Override
@@ -67,8 +75,11 @@ public class WorkoutModel {
     public static class Builder {
         private String name;
         private String date;
-        private String email;
         private String notes;
+        private String exercises;
+        private String email;
+
+
 
         public Builder withName(String name) {
             this.name = name;
@@ -77,6 +88,11 @@ public class WorkoutModel {
 
         public Builder withDate(String date) {
             this.date = date;
+            return this;
+        }
+
+        public Builder withExercises(String exercises) {
+            this.exercises = exercises;
             return this;
         }
 
@@ -91,7 +107,7 @@ public class WorkoutModel {
         }
 
         public WorkoutModel build() {
-            return new WorkoutModel(name, date, notes, email);
+            return new WorkoutModel(name, date, exercises, notes, email);
         }
     }
 

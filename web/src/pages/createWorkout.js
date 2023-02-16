@@ -9,7 +9,7 @@ import DataStore from "../util/DataStore";
 class CreateWorkout extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'submit', 'redirectToViewWorkout', 'searchCardio'], this);
+        this.bindClassMethods(['mount', 'submit', 'redirectToViewWorkout', 'searchCardio', 'searchCalisthenics', 'searchWeightLifting'], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.redirectToViewWorkout);
         this.header = new Header(this.dataStore);
@@ -22,8 +22,8 @@ class CreateWorkout extends BindingClass {
     mount() {
         document.getElementById('create').addEventListener('click', this.submit);
         document.getElementById('cardio-button').addEventListener('click', this.searchCardio);
-        //document.getElementById('weightlifting-button').addEventListener('click', this.searchWeightLifting);
-        //document.getElementById('calisthenics-button').addEventListener('click', this.searchCalisthenics);
+        document.getElementById('weightlifting-button').addEventListener('click', this.searchWeightLifting);
+        document.getElementById('calisthenics-button').addEventListener('click', this.searchCalisthenics);
         this.header.addHeaderToPage();
         this.client = new FitTrackClient();
     }
@@ -44,9 +44,10 @@ class CreateWorkout extends BindingClass {
 
         const workoutName = document.getElementById('workout-name').value;
         const workoutDate = document.getElementById('date').value;
+        const workoutExercises = document.getElementById('exercises').value;
         const workoutNotes = document.getElementById('notes').value;
 
-        const workout = await this.client.createWorkout(workoutName, workoutDate, workoutNotes, (error) => {
+        const workout = await this.client.createWorkout(workoutName, workoutDate, workoutNotes, workoutExercises, (error) => {
             createButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
@@ -65,9 +66,47 @@ class CreateWorkout extends BindingClass {
     async searchCardio(evt) {
         evt.preventDefault();
 
-        const cardio = "Cardio";
-        const cardioList = await this.client.getExercises(`exercises/${cardio}`);
-        document.getElementById("resultsList").innerHTML += "<br>" + cardioList + "<br>";
+        const Cardio = "Cardio";
+
+        const jsonCardioList = await this.client.getExercises(`${Cardio}`);
+        console.log(jsonCardioList);
+        
+        for (var i = 0; i < jsonCardioList.length; i++) {
+            var exercise = jsonCardioList[i];
+            var name = exercise.name;
+            document.getElementById("cardioList").innerHTML += "<br>" + name + "</br>"
+        }
+    }
+
+    async searchCalisthenics(evt) {
+        evt.preventDefault();
+
+        const Calisthenics = "Calisthenics";
+
+        const jsonCalisthenicsList = await this.client.getExercises(`${Calisthenics}`);
+        console.log(jsonCalisthenicsList);
+        
+        for (var i = 0; i < jsonCalisthenicsList.length; i++) {
+            var exercise = jsonCalisthenicsList[i];
+            var name = exercise.name;
+            document.getElementById("calisthenicsList").innerHTML += "<br>" + name + "</br>"
+        }
+
+    }
+
+    async searchWeightLifting(evt) {
+        evt.preventDefault();
+
+        const WeightLifting = "WeightLifting";
+
+        const jsonWeightLiftingList = await this.client.getExercises(`${WeightLifting}`);
+        console.log(jsonWeightLiftingList);
+        
+        for (var i = 0; i < jsonWeightLiftingList.length; i++) {
+            var exercise = jsonWeightLiftingList[i];
+            var name = exercise.name;
+            document.getElementById("weightLiftingList").innerHTML += "<br>" + name + "</br>"
+        }
 
     }
 

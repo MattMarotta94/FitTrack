@@ -73,13 +73,14 @@ export default class FitTrackClient extends BindingClass {
  * @param {*} errorCallback (Optional) A function to execute if the call fails.
  * @returns The workout that has been created.
  */
-    async createWorkout(name, date, notes, errorCallback) {
+    async createWorkout(name, date, notes, exercises, errorCallback) {
         try {
             const token = await this.getTokenOrThrow("Only authenticated users can create workouts.");
             const response = await this.axiosClient.post('workouts', {
                 name:name,
                 notes:notes,
-                date:date
+                date:date,
+                exercises:exercises
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -137,7 +138,7 @@ export default class FitTrackClient extends BindingClass {
     async getExercises(type, errorCallback) {
         try {
             const response = await this.axiosClient.get(`exercises/${type}`)
-            return response.data.exercises;
+            return response.data.exerciseList;
         } catch (error) {
             this.handleError(error, errorCallback);
         }

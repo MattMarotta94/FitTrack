@@ -20,6 +20,7 @@ public class CreateWorkoutLambda
                             .withEmail(claims.get("email"))
                             .withName(unauthenticatedRequest.getName())
                             .withDate(unauthenticatedRequest.getDate())
+                            .withExercises(unauthenticatedRequest.getExercises())
                             .withNotes(unauthenticatedRequest.getNotes())
                             .build());
             }, (request, serviceComponent) -> serviceComponent.provideCreateWorkoutActivity().handleRequest(request)

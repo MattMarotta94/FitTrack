@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 public class CreateWorkoutRequest {
     private final String name;
     private final String date;
+    private final String exercises;
     private final String notes;
 
     private final String email;
@@ -20,9 +21,10 @@ public class CreateWorkoutRequest {
      * @param date the date the workout was created.
      * @param notes any notes logged by the user.
      */
-    private CreateWorkoutRequest(String name, String date, String notes, String email) {
+    private CreateWorkoutRequest(String name, String date, String exercises, String notes, String email) {
         this.name = name;
         this.date = date;
+        this.exercises = exercises;
         this.notes = notes;
         this.email = email;
     }
@@ -33,6 +35,10 @@ public class CreateWorkoutRequest {
 
     public String getDate() {
         return date;
+    }
+
+    public String getExercises() {
+        return exercises;
     }
 
     public String getNotes() {
@@ -48,10 +54,12 @@ public class CreateWorkoutRequest {
         return "CreateWorkoutRequest{" +
                 "name='" + name + '\'' +
                 ", date='" + date + '\'' +
-                ", notes=" + notes +
+                ", exercises='" + exercises + '\'' +
+                ", notes='" + notes + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
+
     //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
@@ -61,6 +69,7 @@ public class CreateWorkoutRequest {
     public static class Builder {
         private String name;
         private String date;
+        private String exercises;
         private String notes;
 
         private String email;
@@ -76,6 +85,11 @@ public class CreateWorkoutRequest {
             return this;
         }
 
+        public Builder withExercises(String exercises) {
+            this.exercises = exercises;
+            return this;
+        }
+
         public Builder withNotes(String notes) {
             this.notes = notes;
             return this;
@@ -87,7 +101,7 @@ public class CreateWorkoutRequest {
         }
 
         public CreateWorkoutRequest build() {
-            return new CreateWorkoutRequest(name, date, notes, email);
+            return new CreateWorkoutRequest(name, date, exercises, notes, email);
         }
     }
 }
