@@ -23,17 +23,6 @@
     padding: 4px 20px;
 }
 
-/* .button {
-  background-color: var(--tertiary-color);
-  border: none;
-  color: var(--secondary-color);
-  padding: 6px 8px 4px 8px;
-  text-align: center;
-  font-weight: bold;
-  text-decoration: none;
-  cursor: pointer;
-} */
-
 .button-group {
     display: flex;
     justify-content: space-between;
@@ -100,21 +89,6 @@ th {
 a {
     color: var(--tertiary-color);
     text-decoration: none;
-}
-
-.fancy-card {
-    width: 190px;
-    height: 254px;
-    background: linear-gradient(145deg, #2B86C5 0%, #FF3CAC 100%);
-    border-radius: 5px;
-    box-shadow: 10px 10px 9px #c5c5c5,
-        -10px -10px 9px #ffffff;
-    transition: box-shadow 0.7s ease;
-}
-
-.card:hover {
-    box-shadow: 10px 10px 15px #c5c5c5,
-            -10px -10px 15px #ffffff;
 }
 
 .new-card {
@@ -216,38 +190,3 @@ a {
     padding-right: 100px;
     margin: 50px;
 }
-
-.form-popup {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    right: 15px;
-    border: 3px solid #f1f1f1;
-    z-index: 9;
-}
-
-.form-container {
-    max-width: 300px;
-    padding: 10px;
-    background-color: white;
-}
-
-
-.sidenav {
-    height: 100%;
-    width: 100px;
-    position: fixed;
-    z-index: auto;
-    top: auto;
-    left: 0;
-    background: linear-gradient(135deg, #ff85ec 0%, #84ff98 100%);
-    overflow-x: hidden;
-    padding-top: 50px;
-    padding-left: 10px;
-    padding-right: 30px;
-  }
-
-  .resultslist {
-
-    
-  }

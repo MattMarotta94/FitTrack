@@ -10,8 +10,6 @@ import com.nashss.se.fittrack.models.WorkoutModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-
 import javax.inject.Inject;
 /**
  * Implementation of the CreateWorkoutActivity for the FitTrack's CreateWorkout API.

@@ -5,7 +5,6 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -67,10 +66,16 @@ public class Workout {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Workout workout = (Workout) o;
-        return Objects.equals(name, workout.name) && Objects.equals(date, workout.date) && Objects.equals(exercises, workout.exercises) && Objects.equals(notes, workout.notes) && Objects.equals(email, workout.email);
+        return Objects.equals(name, workout.name) && Objects.equals(date, workout.date) &&
+                Objects.equals(exercises, workout.exercises) && Objects.equals(notes, workout.notes) &&
+                Objects.equals(email, workout.email);
     }
 
     @Override

@@ -2,15 +2,16 @@ package com.nashss.se.fittrack.activity;
 
 import com.nashss.se.fittrack.activity.requests.DeleteWorkoutRequest;
 import com.nashss.se.fittrack.activity.results.DeleteWorkoutResult;
-import com.nashss.se.fittrack.converters.ModelConverter;
 import com.nashss.se.fittrack.dynamodb.WorkoutDao;
-import com.nashss.se.fittrack.dynamodb.models.Workout;
-import com.nashss.se.fittrack.models.WorkoutModel;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 
+/**
+ * Implementation of the DeleteWorkoutActivity for the FitTrack's DeleteWorkout API.
+ */
 public class DeleteWorkoutActivity {
     private final WorkoutDao workoutDao;
 

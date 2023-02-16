@@ -7,8 +7,10 @@ import com.nashss.se.fittrack.dynamodb.ExerciseDao;
 import com.nashss.se.fittrack.dynamodb.models.Exercise;
 import com.nashss.se.fittrack.models.ExerciseModel;
 
-import javax.inject.Inject;
 import java.util.List;
+
+import javax.inject.Inject;
+
 
 /**
  * GetExerciseActivity.
@@ -31,12 +33,12 @@ public class GetExerciseActivity {
      * @return getExerciseResult object containing the API defined.
      */
     public GetExerciseResult handleRequest(final GetExerciseRequest getExerciseRequest) {
-      List<Exercise> exerciseList = exerciseDao.getExercises(getExerciseRequest.getType());
-      List<ExerciseModel> exerciseModelList = new ModelConverter().toExerciseModel(exerciseList);
+        List<Exercise> exerciseList = exerciseDao.getExercises(getExerciseRequest.getType());
+        List<ExerciseModel> exerciseModelList = new ModelConverter().toExerciseModel(exerciseList);
 
         return GetExerciseResult.builder()
-                .withExercise(exerciseModelList)
-                .build();
+                    .withExercise(exerciseModelList)
+                    .build();
     }
 
 }
