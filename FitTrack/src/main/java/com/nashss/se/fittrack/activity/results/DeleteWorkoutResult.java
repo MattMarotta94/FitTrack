@@ -1,8 +1,15 @@
 package com.nashss.se.fittrack.activity.results;
 
+/**
+ * DeleteWorkoutResult.
+ */
 public class DeleteWorkoutResult {
-  private final String deleted;
+    private final String deleted;
 
+    /**
+     * Instantiates a DeleteWorkoutResult object.
+     * @param deleted the message displayed to confirm deletion.
+     */
     public DeleteWorkoutResult(String deleted) {
         this.deleted = deleted;
 

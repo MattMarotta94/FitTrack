@@ -17,6 +17,7 @@ public class WorkoutModel {
      * Instantiates a WorkoutModel object.
      * @param name the name of the workout.
      * @param date the date the workout was created.
+     * @param exercises the exercises entered into the workout.
      * @param notes the notes for each exercise added into the workout.
      * @param email the email for the users profile determined using Cognito.
      */
