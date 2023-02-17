@@ -124,7 +124,7 @@ export default class FitTrackClient extends BindingClass {
     async deleteWorkout(date, errorCallback) {
         try {
             const token = await this.getTokenOrThrow("Only authenticated users can delete workouts.");
-            const response = await this.axiosClient.delete(`workouts/${date}`, {
+            const response = await this.axiosClient.delete(`workouts/d/${date}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
