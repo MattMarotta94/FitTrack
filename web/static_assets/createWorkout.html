@@ -10,22 +10,22 @@
     <header class="header" id="header"></header>
     <div class="new-card">
         <h2>Create Workout</h2>
+
+        <form class="card-content" id="date-form">
+            <p class="form-field">
+                <label>Date</label>
+                <input type="date" class="date-input" id="date">
+            </p>
+        </form>
         
         <form class="card-content" id="workout-name-form">
             <p class="hidden error" id="error-message"></p>
             <p class="form-field">
                 <label>Workout Name</label>
-                <input type="text" class="input" id="workout-name" placeholder="Example: Leg Day" autofocus>
+                <input type="text" class="name-input" id="workout-name" placeholder="Example: Leg Day" autofocus>
             </p>
         </form>
-        
-        <form class="card-content" id="date-form">
-            <p class="form-field">
-                <label>Date</label>
-                <input type="text" class="input" id="date" placeholder="Day-Month-Year" autofocus>
-            </p>
-        </form>
-
+    
         <form class="card-content" id="exercise-form">
             <p class="form-field">
                 <label>Exercises</label>
@@ -46,18 +46,17 @@
     </div>
 
     <div class="exercises-card">
-        <h2>Exercise Recommendations</h2>
-        <h3>Search By Exercise Type:</h3>
+        <h2><center>Exercise Recommendations</center></h2>
         <p class="button-group">
             <a href="#" class="button" id="cardio-button">Cardio</a>
             <a href="#" class="button" id="weightlifting-button">Weight Lifting</a>
             <a href="#" class="button" id="calisthenics-button">Calisthenics</a>
         </p>
-
-        <ul style="text-align: left;" id="cardioList"></ul>
-        <ul style="text-align: right;" id="calisthenicsList"></ul>
-        <ul style="text-align: center;" id="weightLiftingList"></ul>
-      
+        <div class="row">
+            <div class="column" id="cardioList"></div>
+            <div class="column" id="weightLiftingList"></div>
+            <div class="column" id="calisthenicsList"></div>
+        </div>
     </div>
 
 </body>

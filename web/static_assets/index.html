@@ -10,10 +10,10 @@
     <header class="header" id="header"></header>
     </div>
     <div class="new-card">
-        <h2><center>Welcome to FitTrack!</center></h2>
+        <h1><center>Welcome to FitTrack!</center></h1>
         <p class = "button-group">
-            <a href="createWorkout.html" class="button">New Workout</a>
-            <a href="getWorkout.html" class="button">Old Workout</a>
+            <a href="createWorkout.html" class="button">Create New Workout</a>
+            <a href="getWorkout.html" class="button">Search Previous Workouts</a>
         </p>
     </div>
 
@@ -24,9 +24,11 @@
             <a href="#" class="button" id="weightlifting-button">Weight Lifting</a>
             <a href="#" class="button" id="calisthenics-button">Calisthenics</a>
         </p>
-        <ul style="text-align: left;" id="cardioList"></ul>
-        <ul style="text-align: right;" id="calisthenicsList"></ul>
-        <ul style="text-align: center;" id="weightLiftingList"></ul>
+        <div class="row">
+            <div class="column" id="cardioList"></div>
+            <div class="column" id="weightLiftingList"></div>
+            <div class="column" id="calisthenicsList"></div>
+        </div>
     </div>
 
 </body>
