@@ -258,8 +258,6 @@ Resources:
           Properties:
             Path: /workouts/{date}
             Method: get
-            Auth:
-              Authorizer: 'NONE'
 
   UpdateWorkoutLambda:
     Type: AWS::Serverless::Function
@@ -322,8 +320,7 @@ Resources:
           Properties:
             Path: /workouts/d/{date}/
             Method: delete
-            Auth:
-              Authorizer: 'NONE'
+
 
 
   #-----------------------------------------------------

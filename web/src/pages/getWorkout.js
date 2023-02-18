@@ -48,7 +48,6 @@ class GetWorkout extends BindingClass {
     }
 
     async search(evt) {
-        // Prevent submitting the from from reloading the page.
         evt.preventDefault();
 
         const searchCriteria = document.getElementById('search-criteria').value;
