@@ -40,7 +40,7 @@ class CreateWorkout extends BindingClass {
 
         const createButton = document.getElementById('create');
         const origButtonText = createButton.innerText;
-        createButton.innerText = 'Creating...';
+        createButton.innerText = 'Creating Workout...';
 
         const workoutName = document.getElementById('workout-name').value;
         const workoutDate = document.getElementById('date').value;

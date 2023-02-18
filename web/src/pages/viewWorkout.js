@@ -86,14 +86,15 @@ class ViewWorkout extends BindingClass {
 
         const deleteButton = document.getElementById('delete-button');
         const origButtonText = deleteButton.innerText;
-        deleteButton.innerText = 'Deleted';
+        deleteButton.innerText = 'Deleting..';
 
         const workoutDate = workout.date;
-
         const deletedWorkout =  await this.client.deleteWorkout(workoutDate, (error) => {
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
         });
+
+        window.location.href = `/index.html`;
 
     this.dataStore.set('workout', deletedWorkout);
     
