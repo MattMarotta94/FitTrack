@@ -7,7 +7,7 @@ import DataStore from "../util/DataStore";
 class ViewWorkout extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount', 'addWorkoutToPage', 'showEdits', 'submitEdits', 'showDelete', 'submitDelete'], this);
+        this.bindClassMethods(['clientLoaded', 'mount', 'addWorkoutToPage', 'showEdits', 'submitEdits', 'showDelete', 'submitDelete', 'submitCancel'], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.addWorkoutToPage);
         this.header = new Header(this.dataStore);
@@ -16,8 +16,9 @@ class ViewWorkout extends BindingClass {
     async clientLoaded() {
         const urlParams = new URLSearchParams(window.location.search);
         const workoutDate = urlParams.get('date');
-        document.getElementById('workout-name').innerText = "Loading Workout ...";
+        document.getElementById('loading-message').innerText = "Loading Workout ...";
         const workout = await this.client.getWorkout(workoutDate);
+        document.getElementById('loading-message').innerText = "Workout Found!"
         this.dataStore.set('workout', workout);
 
     }
@@ -27,6 +28,8 @@ class ViewWorkout extends BindingClass {
         document.getElementById('edit-button').addEventListener('click', this.showEdits);
         document.getElementById('create').addEventListener('click', this.submitEdits);
         document.getElementById('delete-button').addEventListener('click', this.submitDelete);
+        document.getElementById('cancel').addEventListener('click', this.submitCancel);
+      
 
         this.client = new FitTrackClient();
         this.clientLoaded();
@@ -58,18 +61,21 @@ class ViewWorkout extends BindingClass {
 
         const submitButton = document.getElementById('create');
         const origButtonText = submitButton.innerText;
-        submitButton.innerText = 'Success!';
+        submitButton.innerText = 'Making Changes...';
 
-        const workoutName = document.getElementById('name').value;
         const workoutDate = document.getElementById('date').value;
+        const workoutName = document.getElementById('name').value;
         const workoutExercises = document.getElementById('exercises').value;
         const workoutNotes = document.getElementById('notes').value;
 
-        const updatedWorkout = await this.client.updateWorkout(workoutDate, workoutName, workoutNotes, workoutExercises, (error) => {
+        const updatedWorkout = await this.client.updateWorkout(workoutDate, workoutName, workoutExercises, workoutNotes,  (error) => {
             submitButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
         });
+
+        const editsFields = document.getElementById('edit-fields');
+        editsFields.classList.add('hidden');
 
         this.dataStore.set('workout', updatedWorkout);
     }
@@ -99,6 +105,14 @@ class ViewWorkout extends BindingClass {
     this.dataStore.set('workout', deletedWorkout);
     
     }
+
+    submitCancel(evt) {
+        evt.preventDefault();
+        var editFields = document.getElementById('edit-fields');
+        editFields.classList.add('hidden');
+    }
+
+
 
 }
 

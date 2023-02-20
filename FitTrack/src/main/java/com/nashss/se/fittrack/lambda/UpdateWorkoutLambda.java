@@ -20,6 +20,7 @@ public class UpdateWorkoutLambda
                                 .withEmail(claims.get("email"))
                                 .withDate(unauthenticatedRequest.getDate())
                                 .withName(unauthenticatedRequest.getName())
+                                .withExercises(unauthenticatedRequest.getExercises())
                                 .withNotes(unauthenticatedRequest.getNotes())
                                 .build());
             },

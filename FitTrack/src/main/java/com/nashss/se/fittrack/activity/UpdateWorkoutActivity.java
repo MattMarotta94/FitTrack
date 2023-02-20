@@ -36,8 +36,10 @@ public class UpdateWorkoutActivity {
         Workout workout = workoutDao.getWorkout(requestedEmail, requestedDate);
 
         workout.setDate(updateWorkoutRequest.getDate());
-        workout.setNotes(updateWorkoutRequest.getNotes());
         workout.setName(updateWorkoutRequest.getName());
+        workout.setExercises(updateWorkoutRequest.getExercises());
+        workout.setNotes(updateWorkoutRequest.getNotes());
+
         workout = workoutDao.saveWorkout(workout);
 
         return UpdateWorkoutResult.builder()
