@@ -49,6 +49,13 @@ class ViewWorkout extends BindingClass {
 
     showEdits() {
         var editFields = document.getElementById('edit-fields');
+        const workout = this.dataStore.get('workout');
+        console.log("workout", workout);
+        document.getElementById('date').value = workout.date;
+        document.getElementById('name').value = workout.name;
+        document.getElementById('exercises').value = workout.exercises;
+        document.getElementById('notes').value = workout.notes;
+        var editFields = document.getElementById('edit-fields');
         editFields.classList.remove('hidden');
     }
 
