@@ -15,14 +15,14 @@ public class UpdateWorkoutRequest {
     private final String date;
     private final String notes;
     private final String email;
-    private final List<Exercise> exerciseList;
+    private final String exercises;
 
-    private UpdateWorkoutRequest(String name, String date, String notes, String email, List<Exercise> exerciseList) {
+    private UpdateWorkoutRequest(String name, String date, String notes, String email, String exercises) {
         this.name = name;
         this.date = date;
         this.notes = notes;
         this.email = email;
-        this.exerciseList = exerciseList;
+        this.exercises = exercises;
     }
 
     public String getName() {
@@ -41,8 +41,8 @@ public class UpdateWorkoutRequest {
         return email;
     }
 
-    public List<Exercise> getExerciseList() {
-        return exerciseList;
+    public String getExercises() {
+        return exercises;
     }
 
 
@@ -53,7 +53,7 @@ public class UpdateWorkoutRequest {
                 ", date='" + date + '\'' +
                 ", notes='" + notes + '\'' +
                 ", email='" + email + '\'' +
-                ", exerciseList=" + exerciseList +
+                ", exercises=" + exercises +
                 '}';
     }
 
@@ -68,7 +68,7 @@ public class UpdateWorkoutRequest {
         private String date;
         private String notes;
         private String email;
-        private List<Exercise> exerciseList;
+        private String exercises;
 
         public Builder withName(String name) {
             this.name = name;
@@ -90,13 +90,13 @@ public class UpdateWorkoutRequest {
             return this;
         }
 
-        public Builder withExerciseList(List<Exercise> exerciseList) {
-            this.exerciseList = exerciseList;
+        public Builder withExercises(String exercises) {
+            this.exercises= exercises;
             return this;
         }
 
         public UpdateWorkoutRequest build() {
-            return new UpdateWorkoutRequest(name, date, notes, email, exerciseList);
+            return new UpdateWorkoutRequest(name, date, notes, email, exercises);
         }
     }
 }

@@ -26,7 +26,7 @@ class GetWorkout extends BindingClass {
     constructor() {
         super();
 
-        this.bindClassMethods(['mount', 'search', 'displayWorkout', 'showEdits', 'submitEdits', 'submitDelete'], this);
+        this.bindClassMethods(['mount', 'search', 'displayWorkout', 'showEdits', 'submitEdits', 'submitDelete', 'submitCancel', 'cancel'], this);
 
         this.dataStore = new DataStore(EMPTY_DATASTORE_STATE);
         this.header = new Header(this.dataStore);
@@ -41,6 +41,8 @@ class GetWorkout extends BindingClass {
         document.getElementById('edit-button').addEventListener('click', this.showEdits);
         document.getElementById('submit-edits').addEventListener('click', this.submitEdits);
         document.getElementById('delete-button').addEventListener('click', this.submitDelete);
+        document.getElementById('cancel-edit').addEventListener('click', this.submitCancel);
+        document.getElementById('cancel').addEventListener('click', this.cancel);
         
         this.header.addHeaderToPage();
 
@@ -50,23 +52,19 @@ class GetWorkout extends BindingClass {
     async search(evt) {
         evt.preventDefault();
 
+        const searchButton = document.getElementById('search-button');
+        const origButtonText = searchButton.innerText;
+        searchButton.innerText = 'Searching...';
+
         const searchCriteria = document.getElementById('search-criteria').value;
-        const previousSearchCriteria = this.dataStore.get(SEARCH_CRITERIA_KEY);
+        const results = await this.client.getWorkout(searchCriteria);
 
-        // If the user didn't change the search criteria, do nothing
-        if (previousSearchCriteria === searchCriteria) {
-            return;
-        }
+        searchButton.innerText = origButtonText;
 
-        if (searchCriteria) {
-            const results = await this.client.getWorkout(searchCriteria);
-
-            this.dataStore.set('results', results)
-            }
-    
+        this.dataStore.set('results', results)
+        
         document.getElementById("edits-card").classList.remove("hidden");
 
-            
         } 
 
     displayWorkout() {
@@ -77,9 +75,17 @@ class GetWorkout extends BindingClass {
         document.getElementById('workout-name').innerText = workout.name;
         document.getElementById('workout-date').innerText = workout.date;
         document.getElementById('workout-notes').innerText = workout.notes;
+        document.getElementById('workout-exercises').innerText = workout.exercises;
     }
 
     showEdits() {
+        console.log("Hit Show Edits");
+        const workout = this.dataStore.get('results');
+        console.log("workout", workout);
+        document.getElementById('date').value = workout.date;
+        document.getElementById('name').value = workout.name;
+        document.getElementById('exercises').value = workout.exercises;
+        document.getElementById('notes').value = workout.notes;
         var editFields = document.getElementById('edit-fields');
         editFields.classList.remove('hidden');
     }
@@ -93,21 +99,23 @@ class GetWorkout extends BindingClass {
 
         const submitButton = document.getElementById('submit-edits');
         const origButtonText = submitButton.innerText;
-        submitButton.innerText = 'Success!';
+        submitButton.innerText = 'Making Changes...';
 
         const workoutName = document.getElementById('name').value;
         const workoutDate = document.getElementById('date').value;
         const workoutNotes = document.getElementById('notes').value;
+        const workoutExercises = document.getElementById('exercises').value;
 
-        const updatedWorkout = await this.client.updateWorkout(workoutDate, workoutName, workoutNotes, (error) => {
+        const updatedWorkout = await this.client.updateWorkout(workoutDate, workoutName, workoutExercises, workoutNotes,  (error) => {
             createButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
         });
 
-        
-
         this.dataStore.set('results', updatedWorkout);
+
+        const editsFields = document.getElementById('edit-fields');
+        editsFields.classList.add('hidden');
        
     }
 
@@ -117,7 +125,7 @@ class GetWorkout extends BindingClass {
 
        const deleteButton = document.getElementById('delete-button');
        const origButtonText = deleteButton.innerText;
-       deleteButton.innerText = 'Deleted';
+       deleteButton.innerText = 'Deleting..';
 
        const workoutDate = workout.date;
 
@@ -126,9 +134,21 @@ class GetWorkout extends BindingClass {
            errorMessageDisplay.classList.remove('hidden');
        });
 
+       window.location.href = `/getWorkout.html`;
+
     this.dataStore.set('results', deletedWorkout);
     }
 
+    submitCancel(evt) {
+        evt.preventDefault();
+        var editFields = document.getElementById('edit-fields');
+        editFields.classList.add('hidden');
+    }
+
+    cancel(evt) {
+        evt.preventDefault();
+        window.location.href = `/index.html`;
+     }
 }
 
 /**

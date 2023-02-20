@@ -9,7 +9,7 @@ import DataStore from "../util/DataStore";
 class CreateWorkout extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'submit', 'redirectToViewWorkout', 'searchCardio', 'searchCalisthenics', 'searchWeightLifting'], this);
+        this.bindClassMethods(['mount', 'submit', 'redirectToViewWorkout', 'searchCardio', 'searchCalisthenics', 'searchWeightLifting', 'cancel'], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.redirectToViewWorkout);
         this.header = new Header(this.dataStore);
@@ -24,6 +24,7 @@ class CreateWorkout extends BindingClass {
         document.getElementById('cardio-button').addEventListener('click', this.searchCardio);
         document.getElementById('weightlifting-button').addEventListener('click', this.searchWeightLifting);
         document.getElementById('calisthenics-button').addEventListener('click', this.searchCalisthenics);
+        document.getElementById('cancel').addEventListener('click', this.cancel);
         this.header.addHeaderToPage();
         this.client = new FitTrackClient();
     }
@@ -120,6 +121,11 @@ class CreateWorkout extends BindingClass {
             document.getElementById("weightLiftingList").innerHTML += "<br>" + name + "</br>"
         }
 
+    }
+
+    cancel(evt) {
+       evt.preventDefault();
+       window.location.href = `/index.html`;
     }
 
 }
