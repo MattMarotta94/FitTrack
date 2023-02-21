@@ -97,6 +97,13 @@ class ViewWorkout extends BindingClass {
 
        const workout = this.dataStore.get('workout')
 
+       var confirmation = confirm('Are you sure you want to delete this workout?');
+       if (confirmation = false) {
+         return;
+       }
+
+       else {
+
         const deleteButton = document.getElementById('delete-button');
         const origButtonText = deleteButton.innerText;
         deleteButton.innerText = 'Deleting..';
@@ -110,6 +117,7 @@ class ViewWorkout extends BindingClass {
         window.location.href = `/index.html`;
 
     this.dataStore.set('workout', deletedWorkout);
+       }
     
     }
 

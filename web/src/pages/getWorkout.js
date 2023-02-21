@@ -123,6 +123,12 @@ class GetWorkout extends BindingClass {
         
        const workout = this.dataStore.get('results')
 
+      var confirmation = confirm('Are you sure you want to delete this workout?');
+      if (confirmation = false) {
+        return;
+      }
+
+      else {
        const deleteButton = document.getElementById('delete-button');
        const origButtonText = deleteButton.innerText;
        deleteButton.innerText = 'Deleting..';
@@ -137,6 +143,7 @@ class GetWorkout extends BindingClass {
        window.location.href = `/getWorkout.html`;
 
     this.dataStore.set('results', deletedWorkout);
+      }
     }
 
     submitCancel(evt) {
