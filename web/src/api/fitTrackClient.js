@@ -144,6 +144,7 @@ export default class FitTrackClient extends BindingClass {
             this.handleError(error, errorCallback);
         }
     }
+
   
         /**
      * Helper method to log the error and run any error functions.

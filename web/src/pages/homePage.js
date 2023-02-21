@@ -33,12 +33,15 @@ async searchCardio(evt) {
     console.log(jsonCardioList);
 
     cardioButton.innerText = origButtonText;
+    document.getElementById('cardioList').innerHTML="";
     
         for (var i = 0; i < jsonCardioList.length; i++) {
             var exercise = jsonCardioList[i];
             var name = exercise.name;
             document.getElementById("cardioList").innerHTML += "<br>" + name + "</br>"
             }
+
+    
             
     }
 
@@ -53,6 +56,7 @@ async searchCalisthenics(evt) {
     console.log(jsonCalisthenicsList);
 
     calisthenicsButton.innerText = origButtonText;
+    document.getElementById('calisthenicsList').innerHTML="";
     
         for (var i = 0; i < jsonCalisthenicsList.length; i++) {
             var exercise = jsonCalisthenicsList[i];
@@ -73,6 +77,7 @@ async searchWeightLifting(evt) {
     console.log(jsonWeightLiftingList);
 
     weightliftingButton.innerText = origButtonText;
+    document.getElementById('weightLiftingList').innerHTML="";
     
         for (var i = 0; i < jsonWeightLiftingList.length; i++) {
             var exercise = jsonWeightLiftingList[i];
