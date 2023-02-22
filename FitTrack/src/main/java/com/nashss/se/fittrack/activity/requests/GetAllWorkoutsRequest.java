@@ -3,10 +3,18 @@ package com.nashss.se.fittrack.activity.requests;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+/**
+ * GetAllWorkoutsRequest.
+ * The request containing the users email.
+ */
 @JsonDeserialize
 public class GetAllWorkoutsRequest {
     private final String email;
 
+    /**
+     * Instantiates a GetAllWorkoutsRequest object.
+     * @param email the users email, parameter taken from cognito.
+     */
     public GetAllWorkoutsRequest(String email) {
         this.email = email;
     }

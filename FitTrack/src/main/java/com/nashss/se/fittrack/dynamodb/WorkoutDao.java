@@ -1,15 +1,17 @@
 package com.nashss.se.fittrack.dynamodb;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
-import com.nashss.se.fittrack.dynamodb.models.Exercise;
 import com.nashss.se.fittrack.dynamodb.models.Workout;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.List;
+
 
 /**
  * Accesses data for a workout using Workout to represent the model in DynamoDB.
@@ -67,6 +69,11 @@ public class WorkoutDao {
         log.info("made it past delete");
     }
 
+    /**
+     * Gets all workouts under the given email.
+     * @param email the email.
+     * @return all workouts with the given email as a partition key.
+     */
     public List<Workout> getAllWorkouts(String email) {
         Workout workout = new Workout();
         workout.setEmail(email);

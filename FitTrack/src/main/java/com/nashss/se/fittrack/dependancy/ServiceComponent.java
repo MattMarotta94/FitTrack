@@ -1,9 +1,11 @@
 package com.nashss.se.fittrack.dependancy;
+import com.nashss.se.fittrack.activity.CreateWorkoutActivity;
+import com.nashss.se.fittrack.activity.DeleteWorkoutActivity;
+import com.nashss.se.fittrack.activity.GetAllWorkoutsActivity;
+import com.nashss.se.fittrack.activity.GetExerciseActivity;
+import com.nashss.se.fittrack.activity.GetWorkoutActivity;
+import com.nashss.se.fittrack.activity.UpdateWorkoutActivity;
 
-import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.nashss.se.fittrack.activity.*;
-
-import com.nashss.se.fittrack.activity.requests.GetAllWorkoutsRequest;
 import dagger.Component;
 
 import javax.inject.Singleton;
@@ -53,5 +55,5 @@ public interface ServiceComponent {
      * Provides the relevant Activity.
      * @return GetAllWorkoutsActivity
      */
-   GetAllWorkoutsActivity provideGetAllWorkoutsActivity();
+    GetAllWorkoutsActivity provideGetAllWorkoutsActivity();
 }
