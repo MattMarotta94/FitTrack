@@ -1,10 +1,7 @@
 package com.nashss.se.fittrack.activity.requests;
-import com.nashss.se.fittrack.dynamodb.models.Exercise;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-
-import java.util.List;
 
 /**
  * Implementation of the UpdateWorkoutRequest.

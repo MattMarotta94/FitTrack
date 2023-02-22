@@ -28,6 +28,11 @@ public class ModelConverter {
                 .build();
     }
 
+    /**
+     * Converts a provided list of Workouts into a list of WorkoutModels.
+     * @param workouts the list of Workouts to convert.
+     * @return the converted WorkoutModel list.
+     */
     public List<WorkoutModel> toWorkoutModel(List<Workout> workouts) {
         List<WorkoutModel> workoutModelList = new ArrayList<>();
         for (Workout workout : workouts) {

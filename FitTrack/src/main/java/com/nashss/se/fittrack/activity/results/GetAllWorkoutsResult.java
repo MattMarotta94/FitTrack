@@ -5,9 +5,16 @@ import com.nashss.se.fittrack.models.WorkoutModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * GetAllWorkoutsResult.
+ */
 public class GetAllWorkoutsResult {
     private final List<WorkoutModel> workoutModelList;
 
+    /**
+     * Instantiates a GetAllWorkoutsResult object.
+     * @param workoutModelList the list of workouts from the workouts table corresponding to the users email.
+     */
     public GetAllWorkoutsResult(List<WorkoutModel> workoutModelList) {
         this.workoutModelList = workoutModelList;
     }
