@@ -26,7 +26,7 @@ class GetWorkout extends BindingClass {
     constructor() {
         super();
 
-        this.bindClassMethods(['mount', 'search', 'displayWorkout', 'showEdits', 'submitEdits', 'submitDelete', 'submitCancel', 'cancel'], this);
+        this.bindClassMethods(['mount', 'search', 'displayWorkout', 'showEdits', 'submitEdits', 'submitDelete', 'submitCancel', 'cancel', 'getAllWorkouts'], this);
 
         this.dataStore = new DataStore(EMPTY_DATASTORE_STATE);
         this.header = new Header(this.dataStore);
@@ -43,10 +43,38 @@ class GetWorkout extends BindingClass {
         document.getElementById('delete-button').addEventListener('click', this.submitDelete);
         document.getElementById('cancel-edit').addEventListener('click', this.submitCancel);
         document.getElementById('cancel').addEventListener('click', this.cancel);
+        document.getElementById('view-all').addEventListener('click', this.getAllWorkouts);
         
         this.header.addHeaderToPage();
 
         this.client = new FitTrackClient();
+    }
+
+    async getAllWorkouts(evt){
+        evt.preventDefault();
+        var success = true;
+        document.getElementById('edits-card').classList.add('hidden');
+        document.getElementById('workouts-list').innerHTML = "";
+
+       const results = await this.client.getAllWorkouts((error) => {
+        errorMessageDisplay.innerText = `Looks like you haven't entered any workouts.`;
+        errorMessageDisplay.classList.remove('hidden');
+        success = false;
+       });
+
+        for (var i = 0; i < results.length; i++) {
+            var workout = results[i];
+            var date = workout.date;
+            var name = workout.name;
+            var exercises = workout.exercises;
+            var notes = workout.notes;
+            document.getElementById("workouts-list").innerHTML += "<br>"+ date + "</br>" + name + "<br>" + exercises + "<br/>" + notes + "<br>"
+        }
+
+        if(success == true) {
+            document.getElementById('all-workouts').classList.remove('hidden');
+        }
+
     }
 
     async search(evt) {
@@ -55,6 +83,7 @@ class GetWorkout extends BindingClass {
         errorMessageDisplay.classList.add('hidden');
         var success = true;
         document.getElementById('edits-card').classList.add('hidden');
+        document.getElementById('all-workouts').classList.add('hidden');
 
         const searchButton = document.getElementById('search-button');
         const origButtonText = searchButton.innerText;
