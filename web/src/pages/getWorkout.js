@@ -121,29 +121,34 @@ class GetWorkout extends BindingClass {
 
     async submitDelete() {
         
-       const workout = this.dataStore.get('results')
+        const workout = this.dataStore.get('results')
 
-      var confirmation = confirm('Are you sure you want to delete this workout?');
-      if (confirmation = false) {
-        return;
-      }
+        var confirmation = confirm('Are you sure you want to delete this workout?');
+        
+        if (confirmation == true) {
 
-      else {
-       const deleteButton = document.getElementById('delete-button');
-       const origButtonText = deleteButton.innerText;
-       deleteButton.innerText = 'Deleting..';
+            const deleteButton = document.getElementById('delete-button');
+            const origButtonText = deleteButton.innerText;
+            deleteButton.innerText = 'Deleting..';
 
-       const workoutDate = workout.date;
+            const workoutDate = workout.date;
 
-       const deletedWorkout =  await this.client.deleteWorkout(workoutDate, (error) => {
-           errorMessageDisplay.innerText = `Error: ${error.message}`;
-           errorMessageDisplay.classList.remove('hidden');
-       });
+            const deletedWorkout =  await this.client.deleteWorkout(workoutDate, (error) => {
+                errorMessageDisplay.innerText = `Error: ${error.message}`;
+                errorMessageDisplay.classList.remove('hidden');
+            });
 
-       window.location.href = `/getWorkout.html`;
+            window.location.href = `/getWorkout.html`;
 
-    this.dataStore.set('results', deletedWorkout);
-      }
+            this.dataStore.set('results', deletedWorkout);
+            
+        }
+
+        else {
+            return ;
+        }
+
+        
     }
 
     submitCancel(evt) {
