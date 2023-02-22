@@ -52,6 +52,8 @@ class GetWorkout extends BindingClass {
     async search(evt) {
         evt.preventDefault();
         var errorMessageDisplay = document.getElementById('error-message');
+        errorMessageDisplay.classList.add('hidden');
+        var success = true;
 
         const searchButton = document.getElementById('search-button');
         const origButtonText = searchButton.innerText;
@@ -62,15 +64,23 @@ class GetWorkout extends BindingClass {
             searchButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: Looks like you didn't workout that day. Try another.`;
             errorMessageDisplay.classList.remove('hidden');
+            success = false;
+            
         });
 
         searchButton.innerText = origButtonText;
 
         this.dataStore.set('results', results)
-        
-        document.getElementById("edits-card").classList.remove("hidden");
 
-        } 
+        if(success == true) {
+            document.getElementById("edits-card").classList.remove("hidden");
+        }
+
+        else {
+            return;
+        }
+
+    } 
 
     displayWorkout() {
         const workout = this.dataStore.get('results');
