@@ -54,6 +54,7 @@ class GetWorkout extends BindingClass {
         var errorMessageDisplay = document.getElementById('error-message');
         errorMessageDisplay.classList.add('hidden');
         var success = true;
+        document.getElementById('edits-card').classList.add('hidden');
 
         const searchButton = document.getElementById('search-button');
         const origButtonText = searchButton.innerText;
