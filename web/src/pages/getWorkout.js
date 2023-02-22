@@ -51,13 +51,18 @@ class GetWorkout extends BindingClass {
 
     async search(evt) {
         evt.preventDefault();
+        var errorMessageDisplay = document.getElementById('error-message');
 
         const searchButton = document.getElementById('search-button');
         const origButtonText = searchButton.innerText;
         searchButton.innerText = 'Searching...';
 
         const searchCriteria = document.getElementById('search-criteria').value;
-        const results = await this.client.getWorkout(searchCriteria);
+        const results = await this.client.getWorkout(searchCriteria, (error) => {
+            searchButton.innerText = origButtonText;
+            errorMessageDisplay.innerText = `Error: Looks like you didn't workout that day. Try another.`;
+            errorMessageDisplay.classList.remove('hidden');
+        });
 
         searchButton.innerText = origButtonText;
 
@@ -70,7 +75,7 @@ class GetWorkout extends BindingClass {
     displayWorkout() {
         const workout = this.dataStore.get('results');
         if (workout == null) {
-            return
+            return;
         }
         document.getElementById('workout-name').innerText = workout.name;
         document.getElementById('workout-date').innerText = workout.date;
