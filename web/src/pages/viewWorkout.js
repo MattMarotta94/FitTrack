@@ -18,7 +18,7 @@ class ViewWorkout extends BindingClass {
         const workoutDate = urlParams.get('date');
         document.getElementById('loading-message').innerText = "Loading Workout ...";
         const workout = await this.client.getWorkout(workoutDate);
-        document.getElementById('loading-message').innerText = "Workout Found!"
+        document.getElementById('loading-message').innerText = "Workout Finished!"
         this.dataStore.set('workout', workout);
 
     }
@@ -97,6 +97,9 @@ class ViewWorkout extends BindingClass {
 
        const workout = this.dataStore.get('workout')
 
+       var confirmation = confirm('Are you sure you want to delete this workout?');
+       if (confirmation == true) {
+
         const deleteButton = document.getElementById('delete-button');
         const origButtonText = deleteButton.innerText;
         deleteButton.innerText = 'Deleting..';
@@ -109,9 +112,14 @@ class ViewWorkout extends BindingClass {
 
         window.location.href = `/index.html`;
 
-    this.dataStore.set('workout', deletedWorkout);
-    
+        this.dataStore.set('workout', deletedWorkout);
+       }
+       
+       else {
+        return;
+       }
     }
+    
 
     submitCancel(evt) {
         evt.preventDefault();
