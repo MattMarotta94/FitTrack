@@ -338,7 +338,7 @@ Resources:
         FitTrack:
           Type: Api
           Properties:
-            Path: /workouts/a/{email}/
+            Path: /workouts/a/
             Method: get
 
 

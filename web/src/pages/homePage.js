@@ -18,7 +18,7 @@ class HomePage extends BindingClass {
         document.getElementById('cardio-button').addEventListener('click', this.searchCardio);
         document.getElementById('weightlifting-button').addEventListener('click', this.searchWeightLifting);
         document.getElementById('calisthenics-button').addEventListener('click', this.searchCalisthenics);
-        
+
         this.client = new FitTrackClient();
     }
 

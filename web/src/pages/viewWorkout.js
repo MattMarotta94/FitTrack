@@ -18,7 +18,7 @@ class ViewWorkout extends BindingClass {
         const workoutDate = urlParams.get('date');
         document.getElementById('loading-message').innerText = "Loading Workout ...";
         const workout = await this.client.getWorkout(workoutDate);
-        document.getElementById('loading-message').innerText = "Workout Finished!"
+        document.getElementById('loading-message').innerText = "Your Workout!"
         this.dataStore.set('workout', workout);
 
     }

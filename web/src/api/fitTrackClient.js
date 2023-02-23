@@ -145,6 +145,20 @@ export default class FitTrackClient extends BindingClass {
         }
     }
 
+    async getAllWorkouts(errorCallback) {
+        try {
+            const token = await this.getTokenOrThrow("You must be logged in to view your workouts");
+            const response = await this.axiosClient.get(`workouts/a/`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            return response.data.workoutModelList;
+        } catch(error) {
+            this.handleError(error, errorCallback);
+        }
+    }
+
   
         /**
      * Helper method to log the error and run any error functions.
