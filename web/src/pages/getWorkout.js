@@ -56,6 +56,10 @@ class GetWorkout extends BindingClass {
         document.getElementById('edits-card').classList.add('hidden');
         document.getElementById('workouts-list').innerHTML = "";
 
+        const allButton = document.getElementById("view-all");
+        const origButtonText = allButton.innerText;
+        allButton.innerText = "Searching..."
+
        const results = await this.client.getAllWorkouts((error) => {
         errorMessageDisplay.innerText = `Looks like you haven't entered any workouts.`;
         errorMessageDisplay.classList.remove('hidden');
@@ -68,8 +72,13 @@ class GetWorkout extends BindingClass {
             var name = workout.name;
             var exercises = workout.exercises;
             var notes = workout.notes;
-            document.getElementById("workouts-list").innerHTML += "<br>"+ date + "</br>" + name + "<br>" + exercises + "<br/>" + notes + "<br>"
+            document.getElementById("workouts-list").innerHTML += "<br>" + "<a href=/viewWorkout.html?date=" + date + " " + "class=" + "searchAllResult" + ">" + "Date:" + " " + date + "</a>" + "</br>" + 
+            "Name:" + " " + name + "<br>" + 
+            "Exercises:" + " " + exercises + "<br/>" + 
+            "Notes:" + " " + notes + "<br>"
         }
+
+        allButton.innerText = origButtonText;
 
         if(success == true) {
             document.getElementById('all-workouts').classList.remove('hidden');
@@ -206,7 +215,9 @@ class GetWorkout extends BindingClass {
         evt.preventDefault();
         window.location.href = `/index.html`;
      }
+
 }
+
 
 /**
  * Main method to run when the page contents have loaded.
