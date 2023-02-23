@@ -17,7 +17,8 @@ class CreateWorkout extends BindingClass {
     }
 
     /**
-     * Add the header to the page and load the WorkoutClient.
+     * Add the header to the page and load the FitTrackClient.
+     * Adds event listeners to buttons.
      */
     mount() {
         document.getElementById('create').addEventListener('click', this.submit);
@@ -56,6 +57,9 @@ class CreateWorkout extends BindingClass {
         this.dataStore.set('workout', workout);
         }
 
+    /**
+     * Method that runs when a change in the datastore is detected. Redirects to the view workouts page.
+     */ 
     redirectToViewWorkout() {
         const workout = this.dataStore.get('workout');
         if(workout != null) {
@@ -63,7 +67,10 @@ class CreateWorkout extends BindingClass {
         }
     }
 
-
+    /**
+     * Method to search Cardio Exercises using the getExercises endpoint.
+     * @param {*} evt 
+     */
     async searchCardio(evt) {
         evt.preventDefault();
         const cardioButton = document.getElementById('cardio-button');
@@ -84,6 +91,10 @@ class CreateWorkout extends BindingClass {
         }
     }
 
+    /**
+     * Method to search Calisthenics exercises using the getExercises endpoint.
+     * @param {*} evt 
+     */
     async searchCalisthenics(evt) {
         evt.preventDefault();
         const calisthenicsButton = document.getElementById('calisthenics-button');
@@ -105,6 +116,10 @@ class CreateWorkout extends BindingClass {
 
     }
 
+    /**
+     * Method to search Weightlifting exercises using the getExercises endpoint.
+     * @param {*} evt 
+     */
     async searchWeightLifting(evt) {
         evt.preventDefault();
         const weightliftingButton = document.getElementById('weightlifting-button');
@@ -126,6 +141,10 @@ class CreateWorkout extends BindingClass {
 
     }
 
+    /**
+     * Method that runs when cancel button is clicked. Returns to home page.
+     * @param {*} evt 
+     */
     cancel(evt) {
        evt.preventDefault();
        window.location.href = `/index.html`;

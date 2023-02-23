@@ -3,7 +3,9 @@ import Header from '../components/header';
 import BindingClass from "../util/bindingClass";
 import DataStore from "../util/DataStore";
 
-
+/**
+ * Logic needed for the view workout page of the website.
+ */
 class ViewWorkout extends BindingClass {
     constructor() {
         super();
@@ -23,6 +25,11 @@ class ViewWorkout extends BindingClass {
 
     }
 
+    /**
+     * Adds the header to the page.
+     * Adds event listeners to buttons.
+     * Loads the FitTrack Client.
+     */
     mount() {
         this.header.addHeaderToPage();
         document.getElementById('edit-button').addEventListener('click', this.showEdits);
@@ -35,6 +42,10 @@ class ViewWorkout extends BindingClass {
         this.clientLoaded();
     }
 
+    /**
+     * Displays the proper values for the desired workout.
+     * @returns 
+     */
     addWorkoutToPage() {
         const workout = this.dataStore.get('workout');
         if (workout == null) {
@@ -47,6 +58,9 @@ class ViewWorkout extends BindingClass {
         document.getElementById('workout-notes').innerText = workout.notes;
     }
 
+    /**
+     * Method that runs when the Edit button is pressed. Reveals the Edits card with appropriate inputs populated using values from the searched workout.
+     */
     showEdits() {
         var editFields = document.getElementById('edit-fields');
         const workout = this.dataStore.get('workout');
@@ -59,6 +73,10 @@ class ViewWorkout extends BindingClass {
         editFields.classList.remove('hidden');
     }
 
+    /**
+     * Method that runs when the Submit Edits button is pressed. Uses the FitTrack client to update the workout with any changes made by the user.
+     * @param {*} evt 
+     */
     async submitEdits(evt) {
         evt.preventDefault();
 
@@ -87,11 +105,19 @@ class ViewWorkout extends BindingClass {
         this.dataStore.set('workout', updatedWorkout);
     }
 
+    /**
+     * Method that reveals the delete button.
+     */
     showDelete() {
         var deleteButton = document.getElementById('delete-button');
         deleteButton.classList.remove('hidden');
     }
 
+    /**
+     * Method that runs when the delete button is pressed. Uses the FitTrack client to delete the desired workout from the Workouts table.
+     * @param {*} evt 
+     * @returns 
+     */
     async submitDelete(evt) {
         evt.preventDefault();
 
@@ -120,7 +146,10 @@ class ViewWorkout extends BindingClass {
        }
     }
     
-
+/**
+ * Hides the Edits Card.
+ * @param {*} evt 
+ */
     submitCancel(evt) {
         evt.preventDefault();
         var editFields = document.getElementById('edit-fields');

@@ -21,7 +21,9 @@ const EMPTY_DATASTORE_STATE = {
     [SEARCH_RESULTS_KEY]: [],
 };
 
-
+/**
+ * Logic needed for the get workout page of the website.
+ */
 class GetWorkout extends BindingClass {
     constructor() {
         super();
@@ -34,7 +36,10 @@ class GetWorkout extends BindingClass {
         console.log("getWorkout constructor");
     }
 
-
+   /**
+     * Add the header to the page and load the FitTrackClient.
+     * Adds event listeners to buttons.
+     */
     mount() {
         document.getElementById('search-button').addEventListener('click', this.search);
         document.getElementById('search-button').addEventListener('click', this.displayWorkout);
@@ -50,6 +55,10 @@ class GetWorkout extends BindingClass {
         this.client = new FitTrackClient();
     }
 
+    /**
+     * Method that runs when the All My Workouts button is pressed. Uses the FitTrack client to return all workouts for that user.
+     * @param {*} evt 
+     */
     async getAllWorkouts(evt){
         evt.preventDefault();
         var success = true;
@@ -86,6 +95,11 @@ class GetWorkout extends BindingClass {
 
     }
 
+    /**
+     * Method that runs when the Search button is pressed. Uses the FitTrack client to search the Database using the selected date. 
+     * @param {*} evt 
+     * @returns 
+     */
     async search(evt) {
         evt.preventDefault();
         var errorMessageDisplay = document.getElementById('error-message');
@@ -121,6 +135,10 @@ class GetWorkout extends BindingClass {
 
     } 
 
+    /**
+     * Method that runs when the Search button is pressed. Displays the proper values for the desired workout.
+     * @returns
+     */
     displayWorkout() {
         const workout = this.dataStore.get('results');
         if (workout == null) {
@@ -132,6 +150,9 @@ class GetWorkout extends BindingClass {
         document.getElementById('workout-exercises').innerText = workout.exercises;
     }
 
+    /**
+     * Method that runs when the Edit button is pressed. Reveals the Edits card with appropriate inputs populated using values from the searched workout.
+     */
     showEdits() {
         console.log("Hit Show Edits");
         const workout = this.dataStore.get('results');
@@ -144,6 +165,10 @@ class GetWorkout extends BindingClass {
         editFields.classList.remove('hidden');
     }
 
+    /**
+     * Method that runs when the Submit Edits button is pressed. Uses the FitTrack client to update the workout with any changes made by the user.
+     * @param {*} evt 
+     */
     async submitEdits(evt) {
         evt.preventDefault();
      
@@ -173,6 +198,10 @@ class GetWorkout extends BindingClass {
        
     }
 
+    /**
+     * Method that runs when the delete button is pressed. Uses the FitTrack client to delete the desired workout from the Workouts table.
+     * @returns
+     */
     async submitDelete() {
         
         const workout = this.dataStore.get('results')
@@ -205,12 +234,20 @@ class GetWorkout extends BindingClass {
         
     }
 
+    /**
+     * Method that runs when the Edits Card cancel button is pressed. Hides the Edits Card.
+     * @param {*} evt 
+     */
     submitCancel(evt) {
         evt.preventDefault();
         var editFields = document.getElementById('edit-fields');
         editFields.classList.add('hidden');
     }
 
+    /**
+     * Method that runs when the cancel button is pressed. Returns to home page.
+     * @param {*} evt 
+     */
     cancel(evt) {
         evt.preventDefault();
         window.location.href = `/index.html`;
